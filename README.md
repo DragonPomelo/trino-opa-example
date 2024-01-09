@@ -7,4 +7,4 @@ The setup includes building the trino with the plugin and lanching opa-trino doc
 - `cd ..`
 ### opa-trino docker compose
 - `cd opa-trino-compose`
-- `docker compose up --build .`
+- `docker compose up --build`
