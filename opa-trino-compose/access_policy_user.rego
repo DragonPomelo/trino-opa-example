@@ -1,9 +1,11 @@
 package trino
 import future.keywords.contains
+import future.keywords.every
 
 default allow = false
 
 default single_resource = false
+
 
 # ================== admin ==================
 
@@ -74,7 +76,7 @@ allow {
     input.action.resource.catalog.name == "tpch"
 	input.context.identity.user == "shoham1"
 }
-# access to tpch.sf1 trino for user some user
+# allow making show tables under specific schema
 allow {
 	print(input)
 	input.action.operation == "ShowTables"
@@ -83,16 +85,45 @@ allow {
 	input.context.identity.user == "shoham1"
 }
 
-# access to trino for user some user
+# -----------------------------------------------
+# for SHOW COLUMNS we need the folowing:
+
+# show columns under specific table
+allow {
+	print(input)
+	input.action.operation == "ShowColumns"
+    input.action.resource.table.catalogName == "tpch"
+    input.action.resource.table.schemaName == "sf1"
+	input.action.resource.table.tableName == "customer"
+	input.context.identity.user == "shoham1"
+}
+
+# access to specific column in specific table
+allow {
+	print(input)
+	input.action.operation == "SelectFromColumns"
+    input.action.resource.table.catalogName == "tpch"
+    input.action.resource.table.schemaName == "information_schema"
+	input.action.resource.table.tableName == "columns"
+    input.context.identity.user == "shoham1"
+}
+
+# -----------------------------------------------
+
+
+# access to specific column in specific table
 allow {
 	print(input)
 	input.action.operation == "SelectFromColumns"
     input.action.resource.table.catalogName == "tpch"
     input.action.resource.table.schemaName == "sf1"
 	input.action.resource.table.tableName == "customer"
-	input.action.resource.table.columns["name"]
+	every column in input.action.resource.table.columns {
+		column == "name"
+	}
     input.context.identity.user == "shoham1"
 }
+
 # access to trino for user some user
 allow {
 	input.action.operation == "ExecuteQuery"
