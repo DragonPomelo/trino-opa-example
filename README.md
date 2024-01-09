@@ -1,5 +1,5 @@
 ## Setup
-The setup includes building the trino with the plugin and lanching opa-trino docker compuse
+The setup includes building the trino with the plugin and lanching opa-trino docker compose
 
 ### Building Trino
 - `cd trino`
