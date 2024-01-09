@@ -19,12 +19,15 @@ services:
      - "8080:8080"
    networks:
      - mynetwork
-  # attribute_api:
-  #   image: attribute_api:latest
-  #   ports:
-  #     - "5000:5000"
-  #   networks:
-  #     - mynetwork
+ attribute_api:
+   build: 
+      context: ./attribute_api
+      dockerfile: Dockerfile
+   image: attribute_api:latest
+   ports:
+     - "8081:8081"
+   networks:
+     - mynetwork
 networks:
   mynetwork:
     driver: bridge
