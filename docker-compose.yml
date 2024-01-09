@@ -19,7 +19,7 @@ services:
      - "8080:8080"
    networks:
      - mynetwork
- attribute_api:
+ abac_api:
    build: 
       context: ./abac_api
       dockerfile: Dockerfile
