@@ -18,48 +18,6 @@ single_resource {
 	input.context.identity.user == "admin"
 }
 
-
-
-
-# # access to information_schema resource in tpch catalog for user shoham1
-# single_resource {
-# 	input.action.operation == "FilterSchemas"
-# 	input.action.resource.schema.catalogName == "tpch"
-# 	input.action.resource.schema.schemaName == "sf1"
-# 	input.context.identity.user == "shoham1"
-# }
-
-# # access to information_schema resource in tpch catalog for user shoham1
-# single_resource {
-# 	input.action.operation == "FilterTables"
-# 	input.action.resource.table.catalogName == "tpch"
-# 	input.action.resource.table.schemaName == "information_schema"
-# 	input.action.resource.table.tableName == "tables"
-# }
-
-# # access to information_schema resource in tpch catalog for user shoham1
-# single_resource {
-# 	input.action.operation == "FilterTables"
-# 	input.action.resource.table.catalogName == "tpch"
-# 	input.action.resource.table.schemaName == "information_schema"
-# 	input.action.resource.table.tableName == "columns"
-# }
-
-# # access to information_schema resource in tpch catalog for user shoham1
-# single_resource {
-# 	input.action.operation == "FilterColumns"
-# 	input.action.resource.table.catalogName == "tpch"
-# 	input.action.resource.table.schemaName == "information_schema"
-# 	input.action.resource.table.tableName == "columns"
-# }
-
-# # access to tpcds catalog resource for user shoham1
-# single_resource {
-# 	input.action.operation == "FilterCatalogs"
-# 	input.action.resource.catalog.name == "tpcds"
-# 	input.context.identity.user == "shoham1"
-# }
-
 # ================== resources access user ==================
 
 # access to tpch catalog resource for user shoham1
