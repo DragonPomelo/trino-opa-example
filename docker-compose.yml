@@ -1,0 +1,30 @@
+version: '3'
+services:
+ opa:
+   build: 
+      context: ./opa
+      dockerfile: Dockerfile
+
+   image: opa:latest
+   ports:
+     - "8181:8181"
+   networks:
+     - mynetwork
+ trino:
+   build: 
+      context: ./trino
+      dockerfile: Dockerfile
+   image: trino_plugin:latest
+   ports:
+     - "8080:8080"
+   networks:
+     - mynetwork
+  # attribute_api:
+  #   image: attribute_api:latest
+  #   ports:
+  #     - "5000:5000"
+  #   networks:
+  #     - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
