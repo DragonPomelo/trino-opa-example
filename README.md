@@ -12,11 +12,12 @@ This project demonstrates how to implement Attribute-Based Access Control (ABAC)
 - Docker (For containerized deployment)
 
 
-## Docker Deployment (Optional):
+## Docker Deployment:
 
 Use the provided Docker Compose file (docker-compose.yml) for a containerized deployment. Update the environment variables in the file according to your configuration.
 - `docker compose up --build --detach`
 
+## Usage
 
 ### Publish policy
 For publishing access_policy_user.rego we will run
