@@ -7,12 +7,12 @@ default single_resource = false
 
 # ================== admin ==================
 
-# admin access to trino for admin user
+# allow access to all simple trino requests for admin user
 allow {
 	print(input)
 	input.context.identity.user == "admin"
 }
-# access to all resources for admin user
+# access to all batch requests for admin user
 single_resource {
     print(input)
 	input.context.identity.user == "admin"
@@ -59,18 +59,7 @@ single_resource {
 
 # ================== system access user ==================
 
-# access to trino for user some user
-allow {
-	input.action.operation == "ExecuteQuery"
-	input.context.identity.user == "shoham1"
-}
-# access to trino for user some user
-allow {
-	print(input)
-	input.action.operation == "AccessCatalog"
-    input.action.resource.catalog.name == "system"
-	input.context.identity.user == "shoham1"
-}
+
 # access to tpch trino for user some user
 allow {
 	print(input)
@@ -93,30 +82,28 @@ allow {
     input.action.resource.schema.schemaName == "sf1"
 	input.context.identity.user == "shoham1"
 }
-# # access to trino for user some user
-# allow {
-# 	print(input)
-# 	input.action.operation == "SelectFromColumns"
-#     input.action.resource.table.catalogName == "tpch"
-#     input.action.resource.table.schemaName == "sf1"
-#     input.action.resource.table.tableName == "customer"
-#     input.context.identity.user == "shoham1"
-# }
 
 # access to trino for user some user
 allow {
 	print(input)
 	input.action.operation == "SelectFromColumns"
     input.action.resource.table.catalogName == "tpch"
-    input.action.resource.table.schemaName == "information_schema"
+    input.action.resource.table.schemaName == "sf1"
+	input.action.resource.table.tableName == "customer"
+	input.action.resource.table.columns["name"]
     input.context.identity.user == "shoham1"
+}
+# access to trino for user some user
+allow {
+	input.action.operation == "ExecuteQuery"
+	input.context.identity.user == "shoham1"
 }
 
 # access to trino for user some user
 allow {
 	print(input)
 	input.action.operation == "AccessCatalog"
-    input.action.resource.table.catalogName == "system"
+    input.action.resource.catalog.name == "system"
 	input.context.identity.user == "shoham1"
 }
 # access to trino for user some user
