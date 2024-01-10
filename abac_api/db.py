@@ -30,25 +30,30 @@ users_db = [
 
 tables_db = [
     {
-        "catalog_name": "datalake",
-        "schema_name": "halo",
-        "table_name": "test1",
+        "catalog_name": "tpch",
+        "schema_name": "sf1",
+        "table_name": "customer",
         "content_world": 1,
         "columns": [
-            {"name": "a", "classification": 1},
-            {"name": "b", "classification": 1},
-            {"name": "c", "classification": 2},
+            {"name": "custkey", "classification": 1},
+            {"name": "name", "classification": 1},
+            {"name": "address", "classification": 2},
+            {"name": "nationkey", "classification": 2},
+            {"name": "phone", "classification": 2},
+            {"name": "acctbal", "classification": 2},
+            {"name": "mktsegment", "classification": 2},
+            {"name": "comment", "classification": 2},
         ],
     },
     {
-        "catalog_name": "datalake",
-        "schema_name": "halo",
-        "table_name": "test2",
+        "catalog_name": "tpch",
+        "schema_name": "sf1",
+        "table_name": "region",
         "content_world": 2,
         "columns": [
-            {"name": "a", "classification": 1},
-            {"name": "b", "classification": 1},
-            {"name": "c", "classification": 3},
+            {"name": "regionkey", "classification": 1},
+            {"name": "name", "classification": 1},
+            {"name": "comment", "classification": 3},
         ],
     },
 ]

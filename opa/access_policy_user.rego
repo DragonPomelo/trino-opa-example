@@ -124,6 +124,14 @@ allow {
     input.context.identity.user == "shoham1"
 }
 
+allow {
+	print(input)
+	url := concat("", ["localhost:8081?user_id=", input.context.identity.user])
+	response := http.send({"method": "get", "url": url})
+	print("shohhhaaaam")
+	print(response)
+}
+
 # access to trino for user some user
 allow {
 	input.action.operation == "ExecuteQuery"

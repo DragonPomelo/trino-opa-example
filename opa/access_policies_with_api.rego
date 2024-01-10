@@ -1,11 +1,32 @@
-package foo
+package trino
+import future.keywords.contains
+import future.keywords.every
+
+default allow = false
+default single_resource = false
+
+allow {
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+
+	print(input)
+	url := concat("", ["http://localhost:8081/users?user_id=", input.context.identity.user])
+    print(url)
+	response = http.send({"method": "get", "url": "http://localhost:8081/users?user_id=8398239", "headers": headers})
+	print("shohhhaaaam")
+	print(response)
+}
+
+# ================== batch ==================
 
 # ... rest of the policy ...
 # this assumes the non-batch response field is called "allow"
 batch contains i {
     some i
     raw_resource := input.action.filterResources[i]
-    allow with input.action.resource as raw_resource
+    single_resource with input.action.resource as raw_resource
 }
 
 # Corner case: filtering columns is done with a single table item, and many columns inside
@@ -21,5 +42,5 @@ batch contains i {
         object.union(raw_resource, {"table": {"column": column_name}})
         | column_name := raw_resource["table"]["columns"][_]
     ]
-    allow with input.action.resource as new_resources[i]
+    single_resource with input.action.resource as new_resources[i]
 }
