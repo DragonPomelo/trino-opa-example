@@ -1,8 +1,9 @@
 from typing import List
-from fastapi import FastAPI
+
 import uvicorn
-from models import Column, Table, UserAttribute, User, TableAttribute
 from db import get_tables_db, get_users_db
+from fastapi import FastAPI
+from models import Column, Table, TableAttribute, User, UserAttribute
 
 app = FastAPI()
 
@@ -13,7 +14,7 @@ def root():
 
 
 @app.get("/users")
-def get_user_attributes(user_id: int) -> List[UserAttribute]:
+def get_user_attributes(user_id: str) -> List[UserAttribute]:
     users_db = get_users_db()
     this_user = [
         UserAttribute(
@@ -27,7 +28,7 @@ def get_user_attributes(user_id: int) -> List[UserAttribute]:
     return this_user
 
 
-@app.post("/table")
+@app.post("/tables")
 def get_table_attributes(table: Table) -> TableAttribute | None:
     tables_db = get_tables_db()
     this_table = None

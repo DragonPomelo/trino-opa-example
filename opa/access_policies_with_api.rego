@@ -4,19 +4,44 @@ import future.keywords.every
 
 default allow = false
 default single_resource = false
-
+url := concat("", ["http://abac_api:8081/users?user_id=", input.context.identity.user])
+user_attributes := http.send({"method": "GET", "url": url}).body
 allow {
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json"
     }
+    print("user_attributes")
+	print(user_attributes)
+}
 
-	print(input)
-	url := concat("", ["http://localhost:8081/users?user_id=", input.context.identity.user])
-    print(url)
-	response = http.send({"method": "get", "url": "http://localhost:8081/users?user_id=8398239", "headers": headers})
-	print("shohhhaaaam")
-	print(response)
+
+
+single_resource {
+    print("FilterCatalogs")
+    input.action.operation == "FilterCatalogs"
+}
+
+single_resource {
+    print("FilterSchemas")
+    input.action.operation == "FilterSchemas"
+}
+
+
+single_resource {
+    print("FilterTables")
+    input.action.operation == "FilterTables"
+    requested_table := {"catalog_name": input.action.resource.table.catalogName, "schema_name": input.action.resource.table.schemaName, "table_name": input.action.resource.table.tableName}
+	print(requested_table)
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    table_attributes := http.send({"method": "POST", "url": "http://abac_api:8081/tables","body": requested_table, "headers": headers}).body
+    print("table_attributes")
+    print(table_attributes)
+    print(user_attributes)
+    table_attributes.content_world == user_attributes[0].content_world
 }
 
 # ================== batch ==================

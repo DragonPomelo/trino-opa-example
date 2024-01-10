@@ -1,4 +1,5 @@
 from typing import List
+
 from pydantic import BaseModel
 
 
@@ -21,7 +22,7 @@ class TableAttribute(BaseModel):
 
 
 class User(BaseModel):
-    id: int
+    id: str
     name: str
 
 

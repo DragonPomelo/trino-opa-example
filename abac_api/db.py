@@ -1,27 +1,26 @@
 from typing import Dict, List
 
-
 users_db = [
     {
-        "user_id": 8398239,
+        "user_id": "8398239",
         "username": "nadav",
         "content_world": 1,
         "classification": 1,
     },
     {
-        "user_id": 8398239,
+        "user_id": "8398239",
         "username": "nadav",
         "content_world": 2,
         "classification": 2,
     },
     {
-        "user_id": 87654321,
+        "user_id": "87654321",
         "username": "alon",
         "content_world": 1,
         "classification": 2,
     },
     {
-        "user_id": 12345678,
+        "user_id": "12345678",
         "username": "shoham",
         "content_world": 1,
         "classification": 3,
