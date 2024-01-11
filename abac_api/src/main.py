@@ -1,9 +1,9 @@
 from typing import List
 
 import uvicorn
-from db import get_tables_db, get_users_db
+from abac_api.src.db import get_tables_db, get_users_db
 from fastapi import FastAPI
-from models import Column, Table, TableAttribute, User, UserAttribute
+from abac_api.src.models import Column, Table, TableAttribute, User, UserAttribute
 
 app = FastAPI()
 
