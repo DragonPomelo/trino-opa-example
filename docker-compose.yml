@@ -28,6 +28,18 @@ services:
      - "8081:8081"
    networks:
      - mynetwork
+ data_sample:
+   image: postgres:latest
+   ports:
+     - "5432:5432"
+   networks:
+     - mynetwork
+ permissions:
+   image: mongo:latest
+   ports:
+     - "27017:27017"
+   networks:
+     - mynetwork
 networks:
   mynetwork:
     driver: bridge
