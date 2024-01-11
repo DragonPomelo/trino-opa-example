@@ -1,6 +1,7 @@
 package trino
 import future.keywords.contains
 import future.keywords.every
+import future.keywords.if
 
 default allow = false
 default single_resource = false
@@ -14,8 +15,6 @@ allow {
     print("user_attributes")
 	print(user_attributes)
 }
-
-
 
 single_resource {
     print("FilterCatalogs")
@@ -42,8 +41,26 @@ single_resource {
     print(table_attributes)
     print(user_attributes)
     table_attributes.content_world == user_attributes[0].content_world
+	# attributes_match(user_attributes, table_attributes)
+}
+# =================Functions=================
+
+# If the intersection of the two arrays(user and table attributes) matches the user array, allow 
+attributes_match(user_attributes, table_attributes) if {
+    # attributes := {user_attributes |
+    #     some i
+    #     parts := split(string, ",")
+    #     user_attributes := parts[i]
+    # }
+
+    inter_atr := user_attributes[0] & table_attributes
+    inter_atr == user_attributes[0]
+    print( "inter=", inter_atr)
 }
 
+apple(color){
+    color == "red"
+}
 # ================== batch ==================
 
 # ... rest of the policy ...
