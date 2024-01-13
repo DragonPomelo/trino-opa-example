@@ -4,6 +4,8 @@
 
 This project demonstrates how to implement Attribute-Based Access Control (ABAC) authorization in Trino (formerly known as PrestoSQL) using Open Policy Agent (OPA). The unique aspect of this implementation is that user attributes and schema/table/column information are dynamically fetched from an external API.
 
+![Architecture](architecture/ABAC_Architecture.png)
+
 ## Requirements
 
 - Docker (For containerized deployment)
