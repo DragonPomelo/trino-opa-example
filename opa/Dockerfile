@@ -11,4 +11,4 @@ EXPOSE 8181
 
 
 # Command to run OPA with the policies
-CMD ["run", "--server", "--addr=:8181", "/app"]
+CMD ["run", "--server", "--addr=:8182", "/app"]

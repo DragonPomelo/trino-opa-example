@@ -1,45 +1,130 @@
 version: '3'
 services:
- opa:
-   build: 
-      context: ./opa
-      dockerfile: Dockerfile
 
-   image: opa:latest
-   ports:
-     - "8181:8181"
-   networks:
-     - mynetwork
- trino:
-   build: 
+  trino:
+    build: 
       context: ./trino
       dockerfile: Dockerfile
-   image: trino_plugin:latest
-   ports:
+    image: trino_plugin:latest
+    depends_on:
+      - postgres
+      - minio
+    ports:
      - "8080:8080"
-   networks:
-     - mynetwork
- abac_api:
-   build: 
+    networks:
+      - mynetwork
+
+  opa:
+    build: 
+      context: ./opa
+      dockerfile: Dockerfile
+    image: opa:latest
+    ports:
+      - "8182:8182"
+    networks:
+      - mynetwork
+
+  abac_api:
+    build: 
       context: ./abac_api
       dockerfile: Dockerfile
-   image: abac_api:latest
-   ports:
-     - "8081:8081"
-   networks:
-     - mynetwork
- data_sample:
-   image: postgres:latest
-   ports:
-     - "5432:5432"
-   networks:
-     - mynetwork
- permissions:
-   image: mongo:latest
-   ports:
-     - "27017:27017"
-   networks:
-     - mynetwork
+    image: abac_api:latest
+    ports:
+      - "8081:8081"
+    networks:
+      - mynetwork
+
+  attribute_db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork
+
+  rest:
+    image: tabulario/iceberg-rest
+    container_name: iceberg-rest
+    networks:
+      - mynetwork
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - 8181:8181
+    environment:
+      AWS_ACCESS_KEY_ID: minio
+      AWS_SECRET_ACCESS_KEY: minio123
+      AWS_REGION: us-east-1
+      CATALOG_WAREHOUSE: s3://datalake/
+      CATALOG_IO__IMPL: org.apache.iceberg.aws.s3.S3FileIO
+      CATALOG_S3_ENDPOINT: http://minio:9000
+      CATALOG_URI: jdbc:postgresql://postgres/datalake_catalog
+      CATALOG_JDBC_USER: admin
+      CATALOG_JDBC_PASSWORD: password
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: datalake_catalog
+      POSTGRES_HOST_AUTH_METHOD: md5
+    networks:
+      - mynetwork
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d datalake_catalog"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+  minio:
+    image: 'minio/minio'
+    container_name: minio
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_DOMAIN: minio
+    command: ["server", "/data", "--console-address", ":9001"]
+    networks:
+      mynetwork:
+        aliases:
+          - datalake.minio
+
+  mc:
+    depends_on:
+      - minio
+    image: minio/mc
+    container_name: mc
+    networks:
+      - mynetwork
+    environment:
+      AWS_ACCESS_KEY_ID: minio
+      AWS_SECRET_ACCESS_KEY: minio123
+      AWS_REGION: us-east-1
+    entrypoint: >
+      /bin/sh -c "
+          until (/usr/bin/mc config host add minio http://minio:9000 minio minio123) do echo '...waiting...' && sleep 1; done;
+          /usr/bin/mc mb minio/datalake;
+          /usr/bin/mc policy set public minio/datalake;
+          tail -f /dev/null
+      "  
+
+volumes:
+  minio_data:
+    driver: local
+  postgres_data:
+    driver: local
+
 networks:
   mynetwork:
     driver: bridge
