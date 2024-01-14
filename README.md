@@ -21,7 +21,7 @@ Use the provided Docker Compose file (docker-compose.yml) for a containerized de
 ### Publish policy
 For publishing access_policy_user.rego we will run
 - `cd opa/policies`
-- `curl -X PUT --data-binary @access_policy_user.rego http://localhost:8181/v1/policies/main`
+- `curl -X PUT --data-binary @access_policy_user.rego http://localhost:8182/v1/policies/main`
 
 For check if the policy was succeffuly published run:
 - `curl http://localhost:8181/v1/policies`
