@@ -1,0 +1,27 @@
+{
+    "user_id": "scott",
+    "attributes": [
+        {
+            "content_world": "logistics",
+            "classification": "sales",
+            "filter_value": [
+                5,
+                6
+            ],
+            "mask": false
+        },
+        {
+            "content_world": "logistics",
+            "classification": "personnel",
+            "filter_value": [
+                3
+            ],
+            "mask": true
+        },
+        {
+            "content_world": "logistics",
+            "classification": "common",
+            "mask": false
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+create schema if not exists datalake.sample WITH (location = 's3a://datalake/sample');
+create or replace table datalake.sample.customer as select * from tpch.tiny.customer;
+create or replace table datalake.sample.lineitem as select * from tpch.tiny.lineitem;
+create or replace table datalake.sample.nation as select * from tpch.tiny.nation;
+create or replace table datalake.sample.orders as select * from tpch.tiny.orders;
+create or replace table datalake.sample.part as select * from tpch.tiny.part;
+create or replace table datalake.sample.partsupp as select * from tpch.tiny.partsupp;
+create or replace table datalake.sample.region as select * from tpch.tiny.region;
+create or replace table datalake.sample.supplier as select * from tpch.tiny.supplier;

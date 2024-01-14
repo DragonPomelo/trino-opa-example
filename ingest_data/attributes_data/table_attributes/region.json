@@ -1,0 +1,32 @@
+{
+    "catalog_name": "datalake",
+    "schema_name": "sample",
+    "table_name": "region",
+    "attributes": {
+        "content_world": "logisticts",
+        "row_filter": false
+    },
+    "columns_list": [
+        {
+            "column_name": "regionkey",
+            "attributes": {
+                "classification": "common",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "name",
+            "attributes": {
+                "classification": "common",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "comment",
+            "attributes": {
+                "classification": "common",
+                "mask": false
+            }
+        }
+    ]
+}
