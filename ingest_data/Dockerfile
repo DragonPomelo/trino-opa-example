@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 
 # Run the Python script
-CMD ["python",  "load_data_to_trino.py" , "load_data_to_mongo.py"]
+CMD ["python",  "src/main.py"]
