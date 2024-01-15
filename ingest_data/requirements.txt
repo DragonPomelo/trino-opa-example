@@ -1,3 +1,0 @@
-pymongo
-trino
-OPA-python-client

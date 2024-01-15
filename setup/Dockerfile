@@ -2,8 +2,8 @@
 FROM python:3.10-slim
 
 # Copy your Python script into the container
-COPY . /usr/src/app/
-
+COPY ./setup /usr/src/app/
+COPY ./opa/policies /usr/src/app/policies
 # Set the working directory
 WORKDIR /usr/src/app/
 

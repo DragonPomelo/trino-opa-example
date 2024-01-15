@@ -41,11 +41,11 @@ services:
     networks:
       - mynetwork
 
-  ingest_data:
+  setup:
     build:
-      context: ./ingest_data
-      dockerfile: Dockerfile
-    image: ingest_data:latest
+      context: ./
+      dockerfile: ./setup/Dockerfile
+    image: setup:latest
     restart: "no"
     networks:
       - mynetwork
