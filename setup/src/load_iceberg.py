@@ -18,15 +18,6 @@ def load_iceberg_data():
                 print(f"Waiting for service at {host}:{port}...")
                 time.sleep(1)
 
-    # Wait for OPA to be ready
-    wait_for_service("opa", 8182)
-    # Create an OPA client
-    opa_client = OpaClient(host="opa", port=8182, version="v1")
-    opa_client.check_connection()
-    # Register admin policy with OPA
-    opa_client.update_opa_policy_fromfile("access_polices_admin.rego", "main")
-    opa_client.get_policies_list()
-    del opa_client
     # Wait for Trino to be ready
     wait_for_service("trino", 8080)
 
