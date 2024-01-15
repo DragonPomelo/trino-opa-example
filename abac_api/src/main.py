@@ -1,9 +1,10 @@
-from typing import List
-
 import uvicorn
-from db import get_tables_db, get_users_db
 from fastapi import FastAPI
-from models import Column, Table, TableAttribute, User, UserAttribute
+from mongo_handler import (
+    get_collection,
+    get_collection_by_key_value,
+    get_collection_by_keys_values,
+)
 
 app = FastAPI()
 
@@ -13,49 +14,58 @@ def root():
     return "Hello world"
 
 
-@app.get("/users")
-def get_user_attributes(user_id: str) -> List[UserAttribute]:
-    users_db = get_users_db()
-    this_user = [
-        UserAttribute(
-            user=User(id=u["user_id"], name=u["username"]),
-            content_world=u["content_world"],
-            classification=u["classification"],
-        )
-        for u in users_db
-        if u["user_id"] == user_id
+@app.get("/content_worlds")
+def get_content_worlds():
+    return [
+        {key: document[key] for key in document if key != "_id"}
+        for document in get_collection("content_world_attributes")
     ]
-    return this_user
 
 
-@app.post("/tables")
-def get_table_attributes(table: Table) -> TableAttribute | None:
-    tables_db = get_tables_db()
-    this_table = None
-    table_attr = None
-    for t in tables_db:
-        this_table = Table(
-            catalog_name=t["catalog_name"],
-            schema_name=t["schema_name"],
-            table_name=t["table_name"],
+@app.get("/content_worlds/{name}")
+def get_content_worlds_by_key(name: str):
+    return [
+        {key: document[key] for key in document if key != "_id"}
+        for document in get_collection_by_key_value(
+            "content_world_attributes", "name", name
         )
+    ]
 
-        if this_table == table:
-            table_attr = TableAttribute(
-                table=this_table,
-                content_world=t["content_world"],
-                column_list=[
-                    Column(
-                        table=this_table,
-                        name=c["name"],
-                        classification=c["classification"],
-                    )
-                    for c in t["columns"]
-                ],
-            )
-            break
 
-    return table_attr
+@app.get("/users")
+def get_users():
+    return [
+        {key: document[key] for key in document if key != "_id"}
+        for document in get_collection("user_attributes")
+    ]
+
+
+@app.get("/users/{id}")
+def get_users_by_key(id: str):
+    return [
+        {key: document[key] for key in document if key != "_id"}
+        for document in get_collection_by_key_value("user_attributes", "user_id", id)
+    ]
+
+
+@app.get("/tables")
+def get_tables():
+    return [
+        {key: document[key] for key in document if key != "_id"}
+        for document in get_collection("table_attributes")
+    ]
+
+
+@app.get("/tables/{catalog}/{schema}/{table}")
+def get_tables_by_key(catalog: str, schema: str, table: str):
+    return [
+        {key: document[key] for key in document if key != "_id"}
+        for document in get_collection_by_keys_values(
+            "table_attributes",
+            ["catalog_name", "schema_name", "table_name"],
+            [catalog, schema, table],
+        )
+    ]
 
 
 if __name__ == "__main__":
