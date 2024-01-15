@@ -1,0 +1,20 @@
+{
+    "user_id": "david",
+    "attributes": [
+        {
+            "content_world": "logistics",
+            "classification": "sales",
+            "filter_value": [
+                1,
+                2,
+                4
+            ],
+            "mask": false
+        },
+        {
+            "content_world": "hr",
+            "classification": "common",
+            "mask": false
+        }
+    ]
+}

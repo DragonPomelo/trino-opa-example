@@ -2,7 +2,7 @@ version: '3'
 services:
 
   trino:
-    build: 
+    build:
       context: ./trino
       dockerfile: Dockerfile
     image: trino_plugin:latest
@@ -10,12 +10,12 @@ services:
       - postgres
       - minio
     ports:
-     - "8080:8080"
+      - "8080:8080"
     networks:
       - mynetwork
 
   opa:
-    build: 
+    build:
       context: ./opa
       dockerfile: Dockerfile
     image: opa:latest
@@ -25,7 +25,7 @@ services:
       - mynetwork
 
   abac_api:
-    build: 
+    build:
       context: ./abac_api
       dockerfile: Dockerfile
     image: abac_api:latest
@@ -40,6 +40,18 @@ services:
       - "27017:27017"
     networks:
       - mynetwork
+
+  ingest_data:
+    build:
+      context: ./ingest_data
+      dockerfile: Dockerfile
+    image: ingest_data:latest
+    restart: "no"
+    networks:
+      - mynetwork
+    depends_on:
+      - attribute_db
+      - trino
 
   rest:
     image: tabulario/iceberg-rest
@@ -76,11 +88,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d datalake_catalog"]
+      test: [ "CMD-SHELL", "pg_isready -U admin -d datalake_catalog" ]
       interval: 5s
       timeout: 5s
       retries: 5
-
 
   minio:
     image: 'minio/minio'
@@ -94,7 +105,7 @@ services:
       MINIO_ROOT_USER: minio
       MINIO_ROOT_PASSWORD: minio123
       MINIO_DOMAIN: minio
-    command: ["server", "/data", "--console-address", ":9001"]
+    command: [ "server", "/data", "--console-address", ":9001" ]
     networks:
       mynetwork:
         aliases:

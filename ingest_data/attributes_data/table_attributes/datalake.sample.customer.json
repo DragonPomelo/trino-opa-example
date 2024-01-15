@@ -1,0 +1,67 @@
+{
+    "catalog_name": "datalake",
+    "schema_name": "sample",
+    "table_name": "customer",
+    "attributes": {
+        "content_world": "logisticts",
+        "row_filter": true
+    },
+    "columns_list": [
+        {
+            "column_name": "custkey",
+            "attributes": {
+                "classification": "sales",
+                "mask": true
+            }
+        },
+        {
+            "column_name": "name",
+            "attributes": {
+                "classification": "personnel",
+                "mask": true
+            }
+        },
+        {
+            "column_name": "address",
+            "attributes": {
+                "classification": "personnel",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "nationkey",
+            "attributes": {
+                "classification": "sales",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "phone",
+            "attributes": {
+                "classification": "personnel",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "acctbal",
+            "attributes": {
+                "classification": "sales",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "mktsegment",
+            "attributes": {
+                "classification": "sales",
+                "mask": false
+            }
+        },
+        {
+            "column_name": "comment",
+            "attributes": {
+                "classification": "common",
+                "mask": false
+            }
+        }
+    ]
+}
