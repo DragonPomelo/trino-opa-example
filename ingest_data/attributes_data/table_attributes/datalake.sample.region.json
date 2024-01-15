@@ -10,22 +10,19 @@
         {
             "column_name": "regionkey",
             "attributes": {
-                "classification": "common",
-                "mask": false
+                "classification": "common"
             }
         },
         {
             "column_name": "name",
             "attributes": {
-                "classification": "common",
-                "mask": false
+                "classification": "common"
             }
         },
         {
             "column_name": "comment",
             "attributes": {
-                "classification": "common",
-                "mask": false
+                "classification": "common"
             }
         }
     ]

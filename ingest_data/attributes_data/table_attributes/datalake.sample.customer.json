@@ -11,56 +11,50 @@
             "column_name": "custkey",
             "attributes": {
                 "classification": "sales",
-                "mask": true
+                "mask": "id"
             }
         },
         {
             "column_name": "name",
             "attributes": {
                 "classification": "personnel",
-                "mask": true
+                "mask": "star"
             }
         },
         {
             "column_name": "address",
             "attributes": {
-                "classification": "personnel",
-                "mask": false
+                "classification": "personnel"
             }
         },
         {
             "column_name": "nationkey",
             "attributes": {
-                "classification": "sales",
-                "mask": false
+                "classification": "sales"
             }
         },
         {
             "column_name": "phone",
             "attributes": {
-                "classification": "personnel",
-                "mask": false
+                "classification": "personnel"
             }
         },
         {
             "column_name": "acctbal",
             "attributes": {
-                "classification": "sales",
-                "mask": false
+                "classification": "sales"
             }
         },
         {
             "column_name": "mktsegment",
             "attributes": {
-                "classification": "sales",
-                "mask": false
+                "classification": "sales"
             }
         },
         {
             "column_name": "comment",
             "attributes": {
-                "classification": "common",
-                "mask": false
+                "classification": "common"
             }
         }
     ]
