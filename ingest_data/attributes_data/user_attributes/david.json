@@ -1,5 +1,6 @@
 {
     "user_id": "david",
+    "mask": false,
     "attributes": [
         {
             "content_world": "logistics",
@@ -8,13 +9,11 @@
                 1,
                 2,
                 4
-            ],
-            "mask": false
+            ]
         },
         {
             "content_world": "hr",
-            "classification": "common",
-            "mask": false
+            "classification": "common"
         }
     ]
 }
