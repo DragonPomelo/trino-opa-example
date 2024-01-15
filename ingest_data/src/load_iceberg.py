@@ -1,8 +1,10 @@
 def load_iceberg_data():
-    import trino
     import socket
     import time
+
     from opa_client import OpaClient
+
+    import trino
 
     # insert data to datalake using trino
     def wait_for_service(host, port):
@@ -10,6 +12,7 @@ def load_iceberg_data():
             try:
                 with socket.create_connection((host, port), timeout=1):
                     print(f"Service at {host}:{port} is reachable.")
+                    time.sleep(10)
                     break
             except (socket.timeout, ConnectionRefusedError):
                 print(f"Waiting for service at {host}:{port}...")
