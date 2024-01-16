@@ -1,6 +1,7 @@
 package policies
 import data.admin
-
+import data.rls
+import data.cms
 import future.keywords.if
 import future.keywords.contains
 
@@ -48,4 +49,13 @@ batch contains i {
         | column_name := raw_resource["table"]["columns"][_]
     ]
     single_resource with input.action.resource as new_resources[i]
+}
+
+
+rowFilters {
+    rls.filter
+}
+
+columnMask {
+    cms.mask
 }
