@@ -56,6 +56,6 @@ rowFilters {
     rls.filter
 }
 
-columnMask {
-    cms.mask("name")
+columnMask := column_mask {
+    column_mask = cms.mask("name")
 }
