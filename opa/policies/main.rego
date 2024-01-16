@@ -1,5 +1,6 @@
 package policies
 import data.admin
+import data.access
 
 import future.keywords.if
 import future.keywords.contains
@@ -11,6 +12,11 @@ allow {
     admin.allow_admin
 }
 
+allow {
+    print("HIiiiiiiiiiiiiiiiii")
+    access.allow_access_catalog
+}
+
 single_resource {
     admin.allow_admin
 }
@@ -20,9 +26,9 @@ single_resource {
 # ----------------------------------------------
 # That section handle the policies for the regular user
 
-allow {
-    not true
-}
+# allow {
+#     not true
+# }
 
 # ----------------------------------------------
 
