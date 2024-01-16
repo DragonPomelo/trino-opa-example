@@ -19,6 +19,10 @@ def load_mongo_data():
 
     print(f"fetched all files from the data folder | got {len(files)} files")
 
+    for folder_name in set([folder_name for folder_name, _ in files]):
+        db[folder_name].drop()
+        print(f"dropped {folder_name} collection")
+
     for folder_name, file_name in files:
         collection = db[folder_name]
         with open(os.path.join(folder_path, folder_name, file_name)) as file:
