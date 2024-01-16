@@ -57,5 +57,6 @@ rowFilters {
 }
 
 columnMask := column_mask {
-    column_mask = cms.mask("name")
+    print(input)
+    column_mask = cms.mask()
 }
