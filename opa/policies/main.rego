@@ -57,5 +57,5 @@ rowFilters {
 }
 
 columnMask {
-    cms.mask
+    cms.mask("name")
 }
