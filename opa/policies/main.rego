@@ -58,5 +58,5 @@ rowFilters {
 
 columnMask := column_mask {
     print(input)
-    column_mask = cms.mask()
+    column_mask = cms.mask
 }
