@@ -2,6 +2,7 @@ package policies
 import data.admin
 import data.rls
 import data.cms
+import data.filter
 import future.keywords.if
 import future.keywords.contains
 
@@ -40,15 +41,8 @@ batch contains i {
 # and we need to retain order
 batch contains i {
     some i
-    input.action.operation == "FilterColumns"
-    count(input.action.filterResources) == 1
-    raw_resource := input.action.filterResources[0]
-    count(raw_resource["table"]["columns"]) > 0
-    new_resources := [
-        object.union(raw_resource, {"table": {"column": column_name}})
-        | column_name := raw_resource["table"]["columns"][_]
-    ]
-    single_resource with input.action.resource as new_resources[i]
+    filter_type := input.action.operation
+
 }
 
 
