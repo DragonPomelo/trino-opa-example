@@ -16,7 +16,6 @@ rowFilters contains {"expression": "nationkey <> 2"} if {
     print(input)
     not is_admin
 }
-hash:= 
 columnMask := {"expression": "*****"} if {
     print("column_masking")
     print(input)

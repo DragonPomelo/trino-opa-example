@@ -1,0 +1,17 @@
+services:
+  dockerhub-registry:
+    url: https://registry-1.docker.io
+    type: oci
+    credentials:
+      bearer:
+        scheme: "Bearer"
+        token: "<mytoken>"
+
+bundles:
+  authz:
+    service: ghcr-registry
+    resource: ghcr.io/someorg/policy-hello:1.0.0
+    persist: true
+    polling:
+      min_delay_seconds: 30
+      max_delay_seconds: 120
