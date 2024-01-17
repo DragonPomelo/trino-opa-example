@@ -1,0 +1,4 @@
+filter_catalogs.rego
+filter_schemas.rego
+filter_tables.rego
+filter_columns.rego

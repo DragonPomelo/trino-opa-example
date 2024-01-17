@@ -1,4 +1,4 @@
-package trino
+package examples_api
 import future.keywords.contains
 import future.keywords.every
 import future.keywords.if

@@ -19,9 +19,11 @@ Use the provided Docker Compose file (docker-compose.yml) for a containerized de
 ## Usage
 
 ### Publish policy
-For publishing access_policy_user.rego we will run
-- `cd opa/policies`
-- `curl -X PUT --data-binary @access_policy_user.rego http://localhost:8182/v1/policies/main`
+For publishing the policies you just need to make sure that there in the your git repo
+
+
+For modifiying opal server to point to your git repo and the branch you can modifiy `.env` file in the root of the project
+
 
 For check if the policy was succeffuly published run:
 - `curl http://localhost:8181/v1/policies`
@@ -42,10 +44,10 @@ For check if the policy was succeffuly published run:
 ### Services and Ports
 
 - trino: http://localhost:8080
-- opa: http://localhost:8182
+- opa: http://localhost:8181
 - abac_api: http://localhost:8081
 - attribute_db: MongoDB on port 27017
-- rest: Iceberg REST service on http://localhost:8181
+- rest: Iceberg REST service on http://localhost:8183
 - postgres: PostgreSQL on port 5432
 - minio: Minio on http://localhost:9000 (console on http://localhost:9001)
 - mc: Minio Client (configured for Minio server)
