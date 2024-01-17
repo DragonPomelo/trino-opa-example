@@ -14,7 +14,9 @@ allow {
 }
 
 allow {
-    print("HIiiiiiiiiiiiiiiiii")
+    access.allow_access_catalog
+}
+single_resource {
     access.allow_access_catalog
 }
 
