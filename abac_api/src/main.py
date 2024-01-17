@@ -42,7 +42,7 @@ def get_users_by_key(id: str = None):
     return [
         {key: document[key] for key in document if key != "_id"}
         for document in get_collection_by_key_value("user_attributes", "user_id", id)
-    ]
+    ][0]
 
 
 @app.get("/tables")
