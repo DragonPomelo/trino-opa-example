@@ -1,9 +1,11 @@
 package access
 import data.abac_am
-import input.context.identity.user
-
+import input
 allow_access_catalog {
     # get user attributes
-    user_attrs := abac_am.user_attributes(user)
+    print(input)
+    print(user)
+    user_attrs := abac_am.user_attributes(input.context.identity.user)
+    print(user_attrs)
     user_attrs["user_id"] == "scott"
 }
