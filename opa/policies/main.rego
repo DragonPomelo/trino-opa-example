@@ -4,7 +4,7 @@ import data.rls
 import data.cms
 import future.keywords.if
 import future.keywords.contains
-import access
+import data.access
 
 #  ----------------------------------------------
 # That section handle the policies for the admin user
