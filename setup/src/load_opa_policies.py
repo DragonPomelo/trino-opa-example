@@ -18,11 +18,11 @@ def load_opa_policies():
                 time.sleep(1)
 
     # Create an OPA client
-    opa_client = OpaClient(host="opa", port=8182, version="v1")
+    opa_client = OpaClient(host="opa", port=8181, version="v1")
     # Specify the base directory
     base_dir = "/usr/src/app/policies"
     # Wait for OPA to be ready
-    wait_for_service("opa", 8182)
+    wait_for_service("opa", 8181)
     # Iterate over all subdirectories
     for root, dirs, files in os.walk(base_dir):
         # Skip the 'examples' folder
