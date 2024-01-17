@@ -4,7 +4,7 @@ import future.keywords.if
 
 user_attributes(user_id) := value {
     print(user_id)
-    url := concat("", ["http://abac_api:8081/users?user_id=", user_id])
+    url := concat("", ["http://abac_api:8081/users?id=", user_id])
     value := http.send({"method": "GET", "url": url}).body
     print(url)
     print(value)
