@@ -33,15 +33,12 @@ def get_content_worlds_by_key(name: str):
 
 
 @app.get("/users")
-def get_users():
-    return [
-        {key: document[key] for key in document if key != "_id"}
-        for document in get_collection("user_attributes")
-    ]
-
-
-@app.get("/users/{id}")
-def get_users_by_key(id: str):
+def get_users_by_key(id: str = None):
+    if not id:
+        return [
+            {key: document[key] for key in document if key != "_id"}
+            for document in get_collection("user_attributes")
+        ]
     return [
         {key: document[key] for key in document if key != "_id"}
         for document in get_collection_by_key_value("user_attributes", "user_id", id)
