@@ -8,10 +8,14 @@ import data.cms
 default hash_mask := ""
 column_name := input.action.resource.column.columnName
 column_type := input.action.resource.column.columnType
+user_id := input.context.identity.user
+catalog_name := input.action.resource.column.catalogName
+schema_name := input.action.resource.column.schemaName
+table_name := input.action.resource.column.tableName
 
+user_attributes := abac_am.user_attributes(user_id)
+table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_name)
 column_attributes := abac_am.get_column_attributes(column_name)
-user_attributes := abac_am.get_user_attributes(input.user)
-table_attributes := abac_am.get_table_attributes(column_name)
 
 user_need_masking {
     user_attributes.mask
