@@ -41,3 +41,9 @@ mask := star_masking {
     column_needs_masking
     column_attributes.mask == "star"
 }
+
+star_masking = star_mask {
+    star_mask := {"expression": "Null"}
+}
+
+hash_masking := {"expression": sprintf("CAST(to_base64(hmac_md5(to_utf8(%v), to_utf8('124356676363'))) AS %v)",[column_name, column_type])}
