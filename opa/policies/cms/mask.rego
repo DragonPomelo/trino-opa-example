@@ -1,6 +1,6 @@
 package cms
 import data.admin
-import data.abac
+import data.abac_am
 import input
 import future.keywords.in
 
@@ -8,9 +8,9 @@ default hash_mask := ""
 column_name := input.action.resource.column.columnName
 column_type := input.action.resource.column.columnType
 
-column_attributes := abac.get_column_attributes(column_name)
-user_attributes := abac.get_user_attributes(input.user)
-table_attributes := abac.get_table_attributes(column_name)
+column_attributes := abac_am.get_column_attributes(column_name)
+user_attributes := abac_am.get_user_attributes(input.user)
+table_attributes := abac_am.get_table_attributes(column_name)
 
 user_need_masking {
     user_attributes.mask
