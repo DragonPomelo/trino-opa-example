@@ -15,7 +15,11 @@ table_name := input.action.resource.column.tableName
 
 user_attributes := abac_am.user_attributes(user_id)
 table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_name)
-column_attributes := abac_am.get_column_attributes(column_name)
+
+get_column_attributes = column_attributes {
+    some i in table_attributes.columns_list[i]
+    column_attributes := 1
+}
 
 user_need_masking {
     user_attributes.mask
