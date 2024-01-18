@@ -18,7 +18,7 @@ table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_na
 
 get_column_attributes = column_attributes {
     some i in table_attributes.columns_list[i]
-    column_attributes := 1
+    column_attributes := i
 }
 
 user_need_masking {
