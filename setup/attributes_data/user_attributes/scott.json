@@ -1,6 +1,9 @@
 {
     "user_id": "scott",
     "mask": true,
+    "catalogs": [
+        "datalake"
+    ],
     "attributes": [
         {
             "content_world": "logistics",
