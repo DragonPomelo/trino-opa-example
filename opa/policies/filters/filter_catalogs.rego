@@ -5,11 +5,8 @@ import input
 import future.keywords.in
 
 filter_catalog {
-    print(input)
 	input.action.operation == "FilterCatalogs"
-    print("Filtering catalogs")
     user_catalogs := abac_am.user_attributes(input.context.identity.user)["catalogs"]
-    print(user_catalogs)
     some catalog in user_catalogs 
     catalog == input.action.resource.catalog.name
 }
