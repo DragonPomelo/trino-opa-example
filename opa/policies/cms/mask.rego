@@ -6,6 +6,7 @@ import future.keywords.in
 import data.cms
 
 default hash_mask := ""
+default column_attributes := {}
 column_name := input.action.resource.column.columnName
 column_type := input.action.resource.column.columnType
 user_id := input.context.identity.user
