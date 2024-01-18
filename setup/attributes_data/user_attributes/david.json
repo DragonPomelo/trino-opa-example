@@ -1,6 +1,10 @@
 {
     "user_id": "david",
     "mask": false,
+    "catalogs": [
+        "datalake",
+        "tpch"
+    ],
     "attributes": [
         {
             "content_world": "logistics",
