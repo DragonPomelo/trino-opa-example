@@ -26,7 +26,8 @@ column_needs_masking {
     column_attributes.column_name == column_name
 }
 
-column_attributes_match {
+# To move to access column
+column_attributes_match_user_attributes {
     some user_attribute in user_attributes.attributes
     user_attribute.content_world == table_attributes.content_world
     user_attribute.classification == column_attributes.classification 
@@ -34,16 +35,16 @@ column_attributes_match {
 
 
 mask := hash_mask {
-    # column_attributes_match
-    # user_need_masking
+    column_attributes_match_user_attributes
+    user_need_masking
     column_needs_masking
     column_attributes.mask == "hash"
     hash_mask := hash_masking(column_name, column_type)
 }
 
 mask := star_mask {
-    # column_attributes_match
-    # user_need_masking
+    column_attributes_match_user_attributes
+    user_need_masking
     column_needs_masking
     column_attributes.mask == "star"
     star_mask := star_masking
