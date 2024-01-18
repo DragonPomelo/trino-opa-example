@@ -16,8 +16,3 @@ allow_catalog {
     input.action.operation == "SelectFromColumns"
     input.resource.table.catalogName == "system"
 }
-
-allow_catalog {
-    print(input)
-    true
-}
