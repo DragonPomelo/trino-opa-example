@@ -18,6 +18,10 @@ allow {
     access.allow_catalog
 }
 
+allow {
+    access.allow_schema
+}
+
 single_resource {
     admin.allow_admin
 }
