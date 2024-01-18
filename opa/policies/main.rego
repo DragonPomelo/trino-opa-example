@@ -11,8 +11,11 @@ import data.filters
 #  ----------------------------------------------
 # That section handle the policies for the admin user
 allow {
-    print("Admin user is allowed to do anything")
     admin.allow_admin
+}
+
+allow {
+    access.allow_catalog
 }
 
 single_resource {
