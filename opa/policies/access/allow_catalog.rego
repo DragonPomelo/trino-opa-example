@@ -4,7 +4,8 @@ import input
 # TODO: implement acces through the abac_api to only allow known users
 
 allow_catalog {
-	input.action.operation == "AccessCatalogs"
+	input.action.operation == "AccessCatalog"
+    input.resource.catalog.name == "system"
 }
 
 allow_catalog {
@@ -14,10 +15,4 @@ allow_catalog {
 allow_catalog {
     input.action.operation == "SelectFromColumns"
     input.resource.table.catalogName == "system"
-    input.resource.table.tableName == "catalogs"
-}
-
-allow_catalog {
-    print(input)
-    true
 }
