@@ -5,6 +5,7 @@ import data.cms
 import data.filter
 import future.keywords.if
 import future.keywords.contains
+import data.access
 
 #  ----------------------------------------------
 # That section handle the policies for the admin user
@@ -22,9 +23,9 @@ single_resource {
 # ----------------------------------------------
 # That section handle the policies for the regular user
 
-allow {
-    not true
-}
+# allow {
+#     not true
+# }
 
 # ----------------------------------------------
 
