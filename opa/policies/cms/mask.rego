@@ -16,7 +16,7 @@ table_name := input.action.resource.column.tableName
 user_attributes := abac_am.user_attributes(user_id)
 table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_name)
 
-get_column_attributes = column_attributes {
+get_column_attributes := column_attributes {
     some column in table_attributes.columns_list
     column.column_name == column_name
     column_attributes := column
