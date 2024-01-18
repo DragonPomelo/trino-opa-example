@@ -18,12 +18,21 @@ allow {
     access.allow_catalog
 }
 
+allow {
+    access.allow_schema
+}
+
 single_resource {
     admin.allow_admin
 }
 
 single_resource {
     filters.filter_catalogs
+}
+
+
+single_resource {
+    filters.filter_schemas
 }
 
 # ----------------------------------------------
