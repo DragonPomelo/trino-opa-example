@@ -15,11 +15,7 @@ allow {
 }
 
 allow {
-    access.allow_catalog
-}
-
-allow {
-    access.allow_schema
+    access.allow_resource
 }
 
 single_resource {
