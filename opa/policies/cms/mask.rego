@@ -17,7 +17,7 @@ user_attributes := abac_am.user_attributes(user_id)
 table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_name)
 
 get_column_attributes = column_attributes {
-    some i in table_attributes.columns_list[i]
+    some i in table_attributes.columns_list
     column_attributes := i
 }
 
