@@ -12,3 +12,8 @@ allow_catalog {
     print(input)
 	input.action.operation == "ExecuteQuery"
 }
+
+allow_catalog {
+    print(input)
+    true
+}
