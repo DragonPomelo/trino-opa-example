@@ -13,13 +13,6 @@ allow {
     admin.allow_admin
 }
 
-allow {
-    access.allow_access_catalog
-}
-single_resource {
-    access.allow_access_catalog
-}
-
 single_resource {
     admin.allow_admin
 }
