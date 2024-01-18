@@ -42,5 +42,5 @@ mask := star_mask {
     # user_need_masking
     column_needs_masking
     column_attributes.mask == "star"
-    star_mask := star_masking(column_name, column_type)
+    star_mask := star_masking
 }
