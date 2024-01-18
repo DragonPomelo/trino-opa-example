@@ -2,18 +2,15 @@ package access
 import input
 
 allow_catalog {
-    # TODO: implement acces through the abac_api to only allow known users
-    print(input)
 	input.action.operation == "AccessCatalogs"
 }
 
 allow_catalog {
-    # TODO: implement acces through the abac_api to only allow known users
-    print(input)
 	input.action.operation == "ExecuteQuery"
 }
 
 allow_catalog {
-    print(input)
-    true
+    input.action.operation == "SelectFromColumns"
+    input.resource.table.catalogName == "system"
+    input.resource.table.tableName == "catalogs"
 }
