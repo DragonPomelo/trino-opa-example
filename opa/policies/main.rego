@@ -6,6 +6,7 @@ import data.filter
 import future.keywords.if
 import future.keywords.contains
 import data.access
+import data.filters
 
 #  ----------------------------------------------
 # That section handle the policies for the admin user
@@ -16,6 +17,10 @@ allow {
 
 single_resource {
     admin.allow_admin
+}
+
+single_resource {
+    filters.filter_catalog
 }
 # ----------------------------------------------
 
