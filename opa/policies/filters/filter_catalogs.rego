@@ -2,6 +2,7 @@ package filters
 import data.admin
 import data.abac_am
 import input
+import future.keywords.in
 
 filter_catalog {
     not admin.user_is_admin
