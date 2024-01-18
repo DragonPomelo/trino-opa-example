@@ -5,7 +5,7 @@ import input
 
 allow_catalog {
 	input.action.operation == "AccessCatalog"
-    input.resource.catalog.name == "system"
+    input.action.resource.catalog.name == "system"
 }
 
 allow_catalog {
@@ -14,10 +14,5 @@ allow_catalog {
 
 allow_catalog {
     input.action.operation == "SelectFromColumns"
-    input.resource.table.catalogName == "system"
-}
-
-allow_catalog {
-    print(input)
-    true
+    input.action.resource.table.catalogName == "system"
 }
