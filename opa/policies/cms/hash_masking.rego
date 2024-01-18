@@ -1,7 +1,7 @@
 package cms
 
 hash_masking(column_name, column_type) = expression {
-    check_column_general_type("varchar") == "varchar"
+    check_column_general_type(column_type, "varchar") == "varchar"
     expression := {"expression": sprintf("CAST(to_base64(hmac_md5(to_utf8(%v), to_utf8('124356676363'))) AS %v)",[column_name, column_type])}
 }
 
