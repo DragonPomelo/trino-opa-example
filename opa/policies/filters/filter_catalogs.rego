@@ -3,7 +3,7 @@ import data.admin
 import data.abac_am
 import input
 import future.keywords.in
-from future.keywords.some
+import future.keywords.some
 
 filter_catalog {
 	input.action.operation == "FilterCatalogs"
