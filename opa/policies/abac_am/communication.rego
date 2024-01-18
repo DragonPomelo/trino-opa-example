@@ -4,7 +4,7 @@ import input
 import future.keywords.in
 
 table_attributes := {"table_name": "partsupp","content_world": "logistics", "row_filter": false}
-column_attributes := {"column_name": "name","classification": "common","mask": "hash"}
+column_attributes := {"column_name": "nationkey","classification": "common","mask": "hash"}
 user_attributes := {
 "user_id": "scott",
 "mask": true,
