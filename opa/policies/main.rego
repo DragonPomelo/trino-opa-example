@@ -27,7 +27,11 @@ single_resource {
 }
 
 single_resource {
-    filters.filter_catalog
+    filters.filter_catalogs
+}
+
+single_resource {
+    filters.filter_schemas
 }
 # ----------------------------------------------
 
