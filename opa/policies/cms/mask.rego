@@ -3,6 +3,7 @@ import data.admin
 import data.abac_am
 import input
 import future.keywords.in
+import data.cms
 
 default hash_mask := ""
 column_name := input.action.resource.column.columnName
