@@ -23,6 +23,7 @@ single_resource {
 }
 
 single_resource {
+    print(input)
     filters.filter_resource
 }
 
