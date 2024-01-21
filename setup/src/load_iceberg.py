@@ -1,10 +1,13 @@
 def load_iceberg_data():
+    import os
     import socket
     import time
 
     from opa_client import OpaClient
 
     import trino
+
+    trino_host = os.getenv("TRINO_URL", "localhost")
 
     # insert data to datalake using trino
     def wait_for_service(host, port):
@@ -19,10 +22,10 @@ def load_iceberg_data():
                 time.sleep(1)
 
     # Wait for Trino to be ready
-    wait_for_service("trino", 8080)
+    wait_for_service(trino_host, 8080)
 
     # Connect to Trino (assuming it's running on localhost and the default port)
-    conn = trino.dbapi.connect(host="trino", port=8080, user="admin")
+    conn = trino.dbapi.connect(host=trino_host, port=8080, user="admin")
 
     # Create a cursor to execute SQL queries
     cursor = conn.cursor()

@@ -2,3 +2,4 @@ allow_catalog.rego
 allow_schema.rego
 allow_table.rego
 allow_column.rego
+allow.rego

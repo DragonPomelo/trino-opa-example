@@ -1,10 +1,13 @@
 def load_mongo_data():
-    import pymongo
-    import os
     import json
+    import os
+
+    import pymongo
+
+    mongodb_host = os.environ.get("MONGODB_HOST", "localhost")
 
     # Connect to MongoDB (assuming it's running on localhost and the default port)
-    client = pymongo.MongoClient("mongodb://attribute_db:27017/")
+    client = pymongo.MongoClient(f"mongodb://{mongodb_host}:27017/")
 
     # Create a new database named "your_database_name"
     db = client["attributes_db"]

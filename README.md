@@ -13,10 +13,22 @@ This project demonstrates how to implement Attribute-Based Access Control (ABAC)
 
 ## Docker Deployment:
 
-Use the provided Docker Compose file (docker-compose.yml) for a containerized deployment. Update the environment variables in the file according to your configuration.
+Use the provided Docker Compose file (docker-compose.yml) for a full containerized deployment. Update the environment variables in the file according to your configuration.
+- update your `.env` file as the one in the `dockerized_opa.env`
+- `docker compose --profile opa up --build --detach`
+
+Use the folowing command for dockerized environment with local opa:
+- Change the `.env` file with the following: `OPA_URL=host.docker.internal` or just copy past `local_opa.env`
+- `opa build opa/policies`
+- `opa run -s --addr localhost:8181 -b bundle.tar.gz`
+- `set ABAC_API_URL=localhost` - export the `ABAC_API_URL` so it could be accessible in the rego file
 - `docker compose up --build --detach`
 
+
 ## Usage
+
+For checking that your policies are ok you can run:
+`opa check ./opa/policies/`
 
 ### Publish policy
 For publishing the policies you just need to make sure that there in the your git repo
