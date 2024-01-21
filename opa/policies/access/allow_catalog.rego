@@ -1,21 +1,23 @@
 package access
 
+import data.abac_am
 import future.keywords.in
 import input
 
-# TODO: implement acces through the abac_api to only allow known users
-
+# Will run if you'll try to use the dbeaver's GUI
 allow_catalog {
 	input.action.operation == "AccessCatalog"
 	input.action.resource.catalog.name == "system"
-}
-
-allow_catalog {
-	input.action.operation == "ExecuteQuery"
+	abac_am.if_user_exists(input.context.identity.user)
 }
 
 allow_catalog {
 	input.action.operation == "SelectFromColumns"
 	input.action.resource.table.catalogName == "system"
 	input.action.resource.table.tableName in ["catalogs", "types"]
+}
+
+# If you run the query `show catalogs`
+allow_catalog {
+	input.action.operation == "ExecuteQuery"
 }
