@@ -1,3 +1,7 @@
+red {
+  color: red;
+}
+
 # CMS (Column Masking Security) Package
 
 The CMS package provides column masking operations for secure data handling. It consists of several Rego files that implement different column masking techniques, such as hash masking and star masking.
@@ -30,4 +34,4 @@ The different mask types are relevent to different cenarios. If you do not need 
 Mask Type | Star | Hash 
 --- | --- | --- 
 Original value should be blocked | $${\color{green}V}$$	 | $${\color{green}V}$$	
-The masked values need to differentiated between  | <span style='color: red;'>X</span> | $${\color{green}V}$$ 
+The masked values need to differentiated between  | <red>X</red> | $${\color{green}V}$$ 
