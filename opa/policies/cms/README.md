@@ -33,5 +33,5 @@ The different mask types are relevent to different cenarios. If you do not need 
 
 Mask Type | Star | Hash 
 --- | --- | --- 
-Original value should be blocked | $${\color{green}V}$$	 | $${\color{green}V}$$	
+Original value should be blocked | **Check**	 | $${\color{green}V}$$	
 The masked values need to differentiated between  | <red>X</red> | $${\color{green}V}$$ 
