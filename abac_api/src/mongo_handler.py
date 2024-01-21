@@ -1,11 +1,14 @@
 import functools
+import os
 
 import pymongo
+
+mongodb_host = os.environ.get("MONGODB_HOST", "localhost")
 
 
 # @functools.lru_cache(maxsize=128)
 def initialize_mongo_client():
-    client = pymongo.MongoClient("mongodb://attribute_db:27017/")
+    client = pymongo.MongoClient(f"mongodb://{mongodb_host}:27017/")
     db = client["attributes_db"]
     return db
 
