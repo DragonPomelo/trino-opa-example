@@ -29,5 +29,5 @@ The different mask types are relevent to different cenarios. If you do not need 
 
 Mask Type | Star | Hash 
 --- | --- | --- 
-Original value should be blocked | V | V
-The masked values need to differentiated between  | $${\color{red}X}$$ | V 
+Original value should be blocked | $${\color{green}V}$$	 | $${\color{green}V}$$	
+The masked values need to differentiated between  | $${\color{red}X}$$ | $${\color{green}V}$$ 
