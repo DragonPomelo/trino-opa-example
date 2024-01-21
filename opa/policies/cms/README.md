@@ -34,4 +34,4 @@ The different mask types are relevent to different cenarios. If you do not need 
 Mask Type | Star | Hash 
 --- | --- | --- 
 Original value should be blocked | :heavy_check_mark: | :heavy_check_mark:	
-The masked values need to differentiated between  | :no_entry: | :heavy_check_mark:
+The masked values need to differentiated between  | :x: | :heavy_check_mark:
