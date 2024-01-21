@@ -1,5 +1,6 @@
 package access
 import input
+import future.keywords.in
 
 # TODO: implement acces through the abac_api to only allow known users
 
@@ -15,4 +16,5 @@ allow_catalog {
 allow_catalog {
     input.action.operation == "SelectFromColumns"
     input.action.resource.table.catalogName == "system"
+    input.action.resource.table.tableName in ("catalogs", "types")
 }
