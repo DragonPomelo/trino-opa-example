@@ -57,10 +57,7 @@ def get_users(id: Optional[str] = None):
         list: A list of users matching the given ID.
     """
     if not id:
-        return [
-            {key: document[key] for key in document if key != "_id"}
-            for document in get_collection("user_attributes")
-        ]
+        return [document["user_id"] for document in get_collection("user_attributes")]
     return [
         {key: document[key] for key in document if key != "_id"}
         for document in get_collection_by_key_value("user_attributes", "user_id", id)
