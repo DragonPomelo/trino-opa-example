@@ -24,6 +24,10 @@ Use the folowing command for dockerized environment with local opa:
 - `set ABAC_API_URL=localhost` - export the `ABAC_API_URL` so it could be accessible in the rego file
 - `docker compose up --build --detach`
 
+## pre-commit
+- install pre-commit
+- run `pre-commit install`
+- check your changes with `pre-commit run`
 
 ## Usage
 
