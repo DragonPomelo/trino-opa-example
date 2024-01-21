@@ -18,8 +18,8 @@ allow_catalog {
 	input.action.resource.table.tableName in ["catalogs", "types"]
 }
 
-# If you run the query `show catalogs`
-allow_catalog {
+
+allow_show_catalogs {
 	input.action.operation == "ExecuteQuery"
 	abac_am.if_user_exists(input.context.identity.user)
 }

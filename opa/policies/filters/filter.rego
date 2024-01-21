@@ -9,3 +9,6 @@ filter_resource if {
 filter_resource if {
 	filter_schemas
 }
+filter_resource if {
+	filter_tables
+}

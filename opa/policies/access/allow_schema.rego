@@ -16,13 +16,19 @@ allow_schema {
 
 # --------------------------------- #
 # deals with show schemas
-allow_schema {
+
+allow_show_schema{
+	allow_access_information_schema
+}
+
+allow_show_schema {
 	input.action.operation == "ShowSchemas"
 	abac_am.if_user_exists(input.context.identity.user)
 	utils.user_can_access_catalog(input.context.identity.user, input.action.resource.catalog.name)
 }
+
 # for retriving schemas information
-allow_schema {
+allow_access_information_schema {
 	input.action.operation == "SelectFromColumns"
 	abac_am.if_user_exists(input.context.identity.user)
 	utils.user_can_access_catalog(input.context.identity.user, input.action.resource.table.catalogName)
@@ -31,3 +37,10 @@ allow_schema {
 }
 
 # --------------------------------- #
+
+
+# --------------------------------- #
+# deals with access schema
+user_can_access_schema {
+	true
+}
