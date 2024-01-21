@@ -87,6 +87,11 @@ services:
       - "8080:8080"
     networks:
       - mynetwork
+    healthcheck:
+      test: [ "CMD-SHELL", "trino --version" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   abac_api:
     build:
@@ -118,9 +123,10 @@ services:
     networks:
       - mynetwork
     depends_on:
-      - attribute_db
-      - trino
-
+      attribute_db:
+        condition: service_started
+      trino:
+        condition: service_healthy
   rest:
     image: tabulario/iceberg-rest
     container_name: iceberg-rest
