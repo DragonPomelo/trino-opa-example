@@ -20,4 +20,5 @@ allow_catalog {
 # If you run the query `show catalogs`
 allow_catalog {
 	input.action.operation == "ExecuteQuery"
+	abac_am.if_user_exists(input.context.identity.user)
 }
