@@ -1,1 +1,4 @@
 catalog_utils.rego
+schema_utils.rego
+table_utils.rego
+column_utils.rego
