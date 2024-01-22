@@ -1,6 +1,7 @@
+from typing import Optional
+
 import uvicorn
 from fastapi import FastAPI
-from typing import Optional
 from mongo_handler import (
     get_collection,
     get_collection_by_key_value,
@@ -81,10 +82,17 @@ def get_tables(
     Returns:
         list: A list of tables matching the given criteria.
     """
-    if not catalog or not schema or not table:
+    if not catalog and not schema and not table:
         return [
             {key: document[key] for key in document if key != "_id"}
             for document in get_collection("table_attributes")
+        ]
+    if catalog and schema and not table:
+        return [
+            {key: document[key] for key in document if key != "_id"}
+            for document in get_collection_by_keys_values(
+                "table_attributes", ["catalog_name", "schema_name"], [catalog, schema]
+            )
         ]
     return [
         {key: document[key] for key in document if key != "_id"}
