@@ -24,6 +24,10 @@ Use the folowing command for dockerized environment with local opa:
 - `opa run -s --addr localhost:8181 -b bundle.tar.gz`
 - `docker compose up --build --detach`
 
+## pre-commit
+- install pre-commit
+- run `pre-commit install`
+- check your changes with `pre-commit run`
 
 ## Usage
 
