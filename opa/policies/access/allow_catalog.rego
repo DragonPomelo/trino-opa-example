@@ -27,7 +27,7 @@ allow_show_catalogs {
 # Allow to access the catalog if the user has the catalog in the catalog's list
 allow_catalog {
     input.action.operation == "AccessCatalog"
-    utils.user_can_access_catalog(input.context.identity.user, input.action.resource.catalog.name)
     abac_am.if_user_exists(input.context.identity.user)
+    utils.user_can_access_catalog(input.context.identity.user, input.action.resource.catalog.name)
 }
 

@@ -6,6 +6,7 @@ import input
 
 allow_show_tables if {
 	input.action.operation == "ShowTables"
+	abac_am.if_user_exists(input.context.identity.user)
     user_has_access_for_requested_schema(input.context.identity.user,input.action.resource.schema.catalogName,input.action.resource.schema.schemaName)
 }
 
