@@ -18,7 +18,7 @@ filter_columns {
 }
 
 user_can_access_column(user_id,catalog_name,schema_name,table_name,column_name) if {
-    table_obj = abac_am.table_attributes(catalog_name, schema_name, table_name)
+    table_obj := abac_am.table_attributes(catalog_name, schema_name, table_name)
     some column_obj in table_obj.columns_list
     column_obj.column_name == column_name
     utils.user_can_access_column(user_id ,catalog_name, schema_name, table_obj, column_obj)
