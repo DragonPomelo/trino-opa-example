@@ -3,7 +3,7 @@
     "schema_name": "sample",
     "table_name": "customer",
     "attributes": {
-        "content_world": "logisticts",
+        "content_world": "logistics",
         "row_filter": true
     },
     "columns_list": [

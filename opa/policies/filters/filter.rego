@@ -12,3 +12,7 @@ filter_resource if {
 filter_resource if {
 	filter_tables
 }
+
+filter_resource if {
+	filter_columns
+}
