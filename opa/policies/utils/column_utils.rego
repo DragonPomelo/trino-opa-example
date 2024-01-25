@@ -17,3 +17,9 @@ get_user_attributes_matched_table_content_world(user_id, table_obj) := user_attr
 column_has_clasification(column_obj, classification) if {
     column_obj.attributes.classification == classification
 }
+
+get_column_obj(catalog_name, schema_name, table_obj, column_name) := returned_column_obj if {
+    some column_obj in table_obj.columns_list
+    column_obj.column_name == column_name
+    returned_column_obj := column_obj
+}
