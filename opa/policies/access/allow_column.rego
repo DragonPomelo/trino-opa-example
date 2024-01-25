@@ -11,9 +11,9 @@ allow_show_tables if {
     # user_has_access_for_requested_table()
 }
 
-user_has_access_for_requested_table(catalog_name, schema_name, table_name) if {
-    user_has_access_for_at_least_one_column(catalog_name, schema_name, table_name)
-}
+# user_has_access_for_requested_table(catalog_name, schema_name, table_name) if {
+#     user_has_access_for_at_least_one_column(catalog_name, schema_name, table_name)
+# }
 
 user_has_access_for_at_least_one_column(catalog_name, schema_name, table_name) if {
     abac_am.table_attributes(catalog_name, schema_name, table_name)
