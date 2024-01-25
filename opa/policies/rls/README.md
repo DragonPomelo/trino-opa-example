@@ -19,3 +19,19 @@ To use this Rego package, follow these steps:
 To define row level security policies, you need to modify the `rls.rego` file. This file contains a set of rules that determine which rows are accessible to different users.
 
 Here's an example of how you can define a simple row level security policy:
+
+The following rule will block any user that isn't admin from viewing rows where nation key is 2
+
+rls.rego:
+
+```
+rowFilters := {"expression": "nationkey <> 2"} if {
+    not is_admin
+}
+```
+main.rego:
+```
+rowFilters contains row_filter if {
+    row_filter := rls.filter
+}
+```

@@ -20,8 +20,9 @@ Use the provided Docker Compose file (docker-compose.yml) for a full containeriz
 Use the folowing command for dockerized environment with local opa:
 - Change the `.env` file with the following: `OPA_URL=host.docker.internal` or just copy past `local_opa.env`
 - `opa build opa/policies`
-- `opa run -s --addr localhost:8181 -b bundle.tar.gz`
 - `set ABAC_API_URL=localhost` - export the `ABAC_API_URL` so it could be accessible in the rego file
+- `set SECRET_KEY=secretkey123` - export the `SECRET_KEY` so it could be accessible in the rego file
+- `opa run -s --addr localhost:8181 -b bundle.tar.gz`
 - `docker compose up --build --detach`
 
 ## pre-commit

@@ -1,4 +1,6 @@
+input_utils.rego
 catalog_utils.rego
+abac_utils.rego
 schema_utils.rego
 table_utils.rego
 column_utils.rego

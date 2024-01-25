@@ -6,7 +6,10 @@ import data.filter
 import future.keywords.if
 import future.keywords.contains
 import data.access
+import data.utils
 import data.filters
+import data.abac_am
+import future.keywords.in
 
 #  ----------------------------------------------
 # That section handle the policies for the admin user
@@ -62,11 +65,10 @@ batch contains i {
     single_resource with input.action.resource as new_resources[i]
 }
 
-
-rowFilters {
-    rls.filter
+columnMask := column_mask {
+    column_mask := cms.mask
 }
 
-columnMask {
-    cms.mask
+rowFilters contains row_filter if {
+    row_filter := rls.filter
 }

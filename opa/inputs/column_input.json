@@ -1,0 +1,23 @@
+{
+    "action": {
+        "operation": "GetColumnMask",
+        "resource": {
+            "column": {
+                "catalogName": "datalake",
+                "columnName": "$file_modified_time",
+                "columnType": "timestamp(3) with time zone",
+                "schemaName": "sample",
+                "tableName": "customer"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "scott"
+        },
+        "softwareStack": {
+            "trinoVersion": "436"
+        }
+    }
+}
