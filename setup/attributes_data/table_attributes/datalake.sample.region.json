@@ -6,24 +6,21 @@
         "content_world": "logistics",
         "row_filter": false
     },
-    "columns_list": [
-        {
-            "column_name": "regionkey",
+    "columns_dict": {
+        "regionkey":{
             "attributes": {
                 "classification": "common"
             }
         },
-        {
-            "column_name": "name",
+        "name": {
             "attributes": {
                 "classification": "common"
             }
         },
-        {
-            "column_name": "comment",
+        "comment": {
             "attributes": {
                 "classification": "common"
             }
         }
-    ]
+    }
 }

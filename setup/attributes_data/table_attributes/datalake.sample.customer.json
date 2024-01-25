@@ -6,56 +6,48 @@
         "content_world": "logistics",
         "row_filter": true
     },
-    "columns_list": [
-        {
-            "column_name": "custkey",
+    "columns_dict": {
+        "custkey":{
             "attributes": {
                 "classification": "sales",
                 "mask": "id"
             }
         },
-        {
-            "column_name": "name",
+        "name": {
             "attributes": {
                 "classification": "personnel",
                 "mask": "star"
             }
         },
-        {
-            "column_name": "address",
+        "address":{
             "attributes": {
                 "classification": "personnel"
             }
         },
-        {
-            "column_name": "nationkey",
+        "nationkey": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "phone",
+        "phone":{
             "attributes": {
                 "classification": "personnel"
             }
         },
-        {
-            "column_name": "acctbal",
+        "acctbal": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "mktsegment",
+        "mktsegment":{
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "comment",
+        "comment": {
             "attributes": {
                 "classification": "common"
             }
         }
-    ]
+    }
 }
