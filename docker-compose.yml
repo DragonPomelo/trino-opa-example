@@ -51,6 +51,7 @@ services:
       - OPAL_LOG_FORMAT_INCLUDE_PID=true
       - OPAL_INLINE_OPA_LOG_FORMAT=http
       - ABAC_API_URL=${ABAC_API_URL}
+      - SECRET_KEY=${SECRET_KEY}
 
       # Uncomment the following lines to enable storing & loading OPA data from a backup file:
       # - OPAL_OFFLINE_MODE_ENABLED=true
