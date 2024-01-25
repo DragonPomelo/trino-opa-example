@@ -6,7 +6,7 @@ import data.utils
 
 
 # Will run if you'll try to use the dbeaver's GUI
-allow_schema {
+allow_table_schemas_in_system_catalog {
 	input.action.operation == "SelectFromColumns"
 	abac_am.if_user_exists(input.context.identity.user)
 	input.action.resource.table.catalogName == "system"
@@ -40,7 +40,3 @@ allow_access_information_schema {
 
 
 # --------------------------------- #
-# deals with access schema
-user_can_access_schema {
-	true
-}

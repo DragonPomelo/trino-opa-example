@@ -52,9 +52,6 @@ batch contains i {
 # Corner case: filtering columns is done with a single table item, and many columns inside
 # We cannot use our normal logic in other parts of the policy as they are based on sets
 # and we need to retain order
-# Corner case: filtering columns is done with a single table item, and many columns inside
-# We cannot use our normal logic in other parts of the policy as they are based on sets
-# and we need to retain order
 batch contains i {
     some i
     input.action.operation == "FilterColumns"

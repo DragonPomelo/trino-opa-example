@@ -12,7 +12,7 @@ allow_resource {
 }
 
 allow_resource {
-    access.allow_schema
+    access.allow_table_schemas_in_system_catalog
 }
 
 allow_resource {
@@ -22,3 +22,12 @@ allow_resource {
 allow_resource {
     access.allow_show_schema
 }
+
+allow_resource {
+    access.allow_show_columns
+}
+
+allow_resource {
+    access.allow_table
+}
+
