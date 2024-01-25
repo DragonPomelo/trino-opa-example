@@ -1,6 +1,6 @@
-allow_catalog.rego
-allow_show_schemas.rego
-allow_show_tables.rego
-allow_show_columns.rego
+allow_default_access.rego
+allow_resource_catalog.rego
+allow_resource_schema.rego
 allow_resource_table.rego
+allow_resource.rego
 allow.rego

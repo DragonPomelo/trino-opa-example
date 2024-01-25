@@ -1,40 +1,39 @@
 package policies
+import data.abac_am
 import data.admin
 import data.rls
 import data.cms
 import data.filter
-import future.keywords.if
-import future.keywords.contains
 import data.access
 import data.filters
+import future.keywords.if
+import future.keywords.contains
 
 #  ----------------------------------------------
 # That section handle the policies for the admin user
 allow {
+    abac_am.if_user_exists(input.context.identity.user)
     admin.allow_admin
+    print(input)
 }
 
+single_resource {
+    abac_am.if_user_exists(input.context.identity.user)
+    admin.allow_admin
+    print(input)
+}
+
+# ----------------------------------------------
+# That section handle the policies for the regular user
 allow {
+    abac_am.if_user_exists(input.context.identity.user)
     access.allow_resource
 }
 
 single_resource {
-    admin.allow_admin
-}
-
-single_resource {
+    abac_am.if_user_exists(input.context.identity.user)
     filters.filter_resource
 }
-
-# ----------------------------------------------
-
-
-# ----------------------------------------------
-# That section handle the policies for the regular user
-
-# allow {
-#     not true
-# }
 
 # ----------------------------------------------
 
