@@ -1,36 +1,14 @@
 package rls
 
-import data.abac_am
 import data.admin
-import data.cms
+import data.utils
 import future.keywords.if
-import future.keywords.in
 
-user_id := input.context.identity.user
-
-catalog_name := input.action.resource.table.catalogName
-
-schema_name := input.action.resource.table.schemaName
-
-table_name := input.action.resource.table.tableName
-
-user_attributes := abac_am.user_attributes(user_id)
-
-table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_name)
-
-content_world_attributes := abac_am.content_world_attributes(table_attributes.attributes.content_world)
-
-filter[row_filter] {
-    table_attributes.attributes.row_filter == true
-    filter_feild := content_world_attributes.filter_key
-	user_attribute := user_attributes.attributes[_]
-    row_filtering_needed(user_attribute)
-	filter_value := user_attribute.filter_value[_]
-	expression := sprintf("%v <> %v", [filter_feild, filter_value])
+filter := row_filter if {
+    not admin.user_is_admin
+	utils.table_attributes.attributes.row_filter == true
+	filter_feild := utils.content_world_attributes.filter_key
+    filter_values_string := concat(", ", filter_values_list)
+	expression := sprintf("%v IN (%v)", [filter_feild, filter_values_string])
 	row_filter := {"expression": sprintf("%v", [expression])}
-}
-
-row_filtering_needed(user_attribute) {
-    user_attribute.filter_value
-    user_attribute.content_world == table_attributes.attributes.content_world
 }

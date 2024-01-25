@@ -1,0 +1,21 @@
+{
+    "action": {
+        "operation": "GetRowFilters",
+        "resource": {
+            "table": {
+                "catalogName": "datalake",
+                "schemaName": "sample",
+                "tableName": "customer"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "scott"
+        },
+        "softwareStack": {
+            "trinoVersion": "436"
+        }
+    }
+}

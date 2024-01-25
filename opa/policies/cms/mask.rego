@@ -1,57 +1,26 @@
 package cms
 import data.admin
 import data.abac_am
+import data.access
+import data.utils
 import input
 import future.keywords.in
-import data.cms
 
 default hash_mask := ""
-default column_attributes := {}
-column_name := input.action.resource.column.columnName
-column_type := input.action.resource.column.columnType
-user_id := input.context.identity.user
-catalog_name := input.action.resource.column.catalogName
-schema_name := input.action.resource.column.schemaName
-table_name := input.action.resource.column.tableName
-
-user_attributes := abac_am.user_attributes(user_id)
-table_attributes := abac_am.table_attributes(catalog_name, schema_name, table_name)
-
-get_column_attributes := column_attributes {
-    some column in table_attributes.columns_list
-    column.column_name == column_name
-    column_attributes := column
-}
-
-user_need_masking {
-    user_attributes.mask
-}
-
-column_needs_masking {
-    column_attributes.mask
-    column_attributes.column_name == column_name
-}
-
-# To move to access column
-column_attributes_match_user_attributes {
-    some user_attribute in user_attributes.attributes
-    user_attribute.content_world == table_attributes.content_world
-    user_attribute.classification == column_attributes.attributes.classification 
-}
-
+secret_key := opa.runtime().env.SECRET_KEY
 
 mask := hash_mask {
-    column_attributes_match_user_attributes
+    access.column_attributes_match_user_attributes
     user_need_masking
     column_needs_masking
-    column_attributes.attributes.mask == "hash"
-    hash_mask := hash_masking(column_name, column_type)
+    access.column_attributes.attributes.mask == "id"
+    hash_mask := hash_masking(utils.column_name, utils.column_type, secret_key)
 }
 
 mask := star_mask {
-    column_attributes_match_user_attributes
+    access.column_attributes_match_user_attributes
     user_need_masking
     column_needs_masking
-    column_attributes.attributes.mask == "star"
+    access.column_attributes.attributes.mask == "star"
     star_mask := star_masking
 }

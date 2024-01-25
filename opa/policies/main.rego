@@ -6,6 +6,7 @@ import data.filter
 import future.keywords.if
 import future.keywords.contains
 import data.access
+import data.utils
 import data.filters
 import data.abac_am
 import future.keywords.in
@@ -68,9 +69,9 @@ batch contains i {
 }
 
 columnMask := column_mask {
-    column_mask = cms.mask
+    column_mask := cms.mask
 }
 
 rowFilters contains row_filter if {
-    row_filter := rls.filter[_]
+    row_filter := rls.filter
 }
