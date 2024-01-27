@@ -10,6 +10,7 @@ hash_masking(column_name, column_type, secret_key) := expression {
     check_column_general_type(column_type, "bigint") == "bigint"
     expression := {"expression": sprintf("crc32(hmac_sha256(to_big_endian_64(%v), to_utf8('%v')))",[column_name, secret_key])}
 }
+
 check_column_general_type(column_type, general_type) := general_type {
     contains(column_type, general_type)
 }

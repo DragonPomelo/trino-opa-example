@@ -9,3 +9,8 @@ allow_for_resource_schema(operation, resource) if {
     schema_name := resource.schema.schemaName
     utils.user_can_access_schema(user_id, catalog_name, schema_name)
 }
+
+allow_for_resource_schema(operation, resource) if {
+    operation == "FilterSchemas"
+    utils.user_can_access_schema(input.context.identity.user, resource.schema.catalogName, resource.schema.schemaName)
+}

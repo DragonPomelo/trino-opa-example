@@ -3,7 +3,9 @@ import data.abac_am
 import future.keywords.in
 import future.keywords.if
 
-user_can_access_column(user_id, catalog_name, schema_name, table_obj, column_obj) if {
+user_can_access_column(user_id, catalog_name, schema_name, table_obj, column_name) if {
+    table_obj.columns_dict[column_name]
+    column_obj := table_obj.columns_dict[column_name]
     user_attributes_matched_table_content_world := get_user_attributes_matched_table_content_world(user_id, table_obj)
     some user_attribute in user_attributes_matched_table_content_world
     column_has_clasification(column_obj, user_attribute.classification)
@@ -19,7 +21,6 @@ column_has_clasification(column_obj, classification) if {
 }
 
 get_column_obj(catalog_name, schema_name, table_obj, column_name) := returned_column_obj if {
-    some column_obj in table_obj.columns_list
-    column_obj.column_name == column_name
-    returned_column_obj := column_obj
+    table_obj.columns_dict[column_name]
+    returned_column_obj := table_obj.columns_dict[column_name]
 }
