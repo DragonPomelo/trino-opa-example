@@ -4,10 +4,11 @@
     "table_name": "customer",
     "attributes": {
         "content_world": "logistics",
-        "row_filter": true
+        "row_filter": true,
+        "row_filter_id": "custkey"
     },
     "columns_dict": {
-        "custkey":{
+        "custkey": {
             "attributes": {
                 "classification": "sales",
                 "mask": "id"
@@ -19,7 +20,7 @@
                 "mask": "star"
             }
         },
-        "address":{
+        "address": {
             "attributes": {
                 "classification": "personnel"
             }
@@ -29,7 +30,7 @@
                 "classification": "sales"
             }
         },
-        "phone":{
+        "phone": {
             "attributes": {
                 "classification": "personnel"
             }
@@ -39,7 +40,7 @@
                 "classification": "sales"
             }
         },
-        "mktsegment":{
+        "mktsegment": {
             "attributes": {
                 "classification": "sales"
             }
