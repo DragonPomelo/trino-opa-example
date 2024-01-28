@@ -19,7 +19,7 @@ allow {
 # ----------------------------------------------
 # That section handle the policies for the regular user
 allow {
-    abac_am.if_user_exists(input.context.identity.user)
+    abac_am.if_user_exists(utils.user_id)
     access.allow_resource
 }
 

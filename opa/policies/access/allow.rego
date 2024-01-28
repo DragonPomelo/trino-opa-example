@@ -3,11 +3,11 @@ package access
 import data.access
 import input
 
-allow_resource {
+allow_resource if {
     access.allow_default_access
 }
 
-allow_resource {
+allow_resource if {
     operation := input.action.operation
     resource := input.action.resource
     access.allow_for_resource(operation, resource)

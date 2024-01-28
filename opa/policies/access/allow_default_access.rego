@@ -31,7 +31,7 @@ allow_default_access if {
 }
 
 allow_execute_query if {
-	abac_am.if_user_exists(input.context.identity.user)
+	abac_am.if_user_exists(utils.user_id)
 	input.action.operation == "ExecuteQuery"
 }
 
@@ -56,7 +56,7 @@ allow_system_catalog_jdbc_schema_tables_table if {
 }
 
 # Will run if you'll try to use the dbeaver's GUI
-allow_sfc_on_table_schemas_in_system_catalog {
+allow_sfc_on_table_schemas_in_system_catalog if {
 	input.action.operation == "SelectFromColumns"
 	input.action.resource.table.catalogName == "system"
 	input.action.resource.table.schemaName = "jdbc"
