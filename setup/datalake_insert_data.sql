@@ -7,3 +7,4 @@ create or replace table datalake.sample.part as select * from tpch.tiny.part;
 create or replace table datalake.sample.partsupp as select * from tpch.tiny.partsupp;
 create or replace table datalake.sample.region as select * from tpch.tiny.region;
 create or replace table datalake.sample.supplier as select * from tpch.tiny.supplier;
+create or replace table datalake.sample.customer_properties as select distinct custKey, nationKey from tpch.tiny.customer;
