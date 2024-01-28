@@ -4,7 +4,8 @@
     "table_name": "orders",
     "attributes": {
         "content_world": "logistics",
-        "row_filter": false
+        "row_filter": true,
+        "row_filter_id": "custkey"
     },
     "columns_dict": {
         "orderkey": {
@@ -13,13 +14,13 @@
                 "mask": "id"
             }
         },
-        "custkey":{
+        "custkey": {
             "attributes": {
                 "classification": "sales",
                 "mask": "id"
             }
         },
-        "orderstatus":{
+        "orderstatus": {
             "attributes": {
                 "classification": "orders"
             }

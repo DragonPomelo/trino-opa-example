@@ -1,0 +1,21 @@
+{
+    "catalog_name": "datalake",
+    "schema_name": "sample",
+    "table_name": "customer_properties",
+    "attributes": {
+        "content_world": "global",
+        "row_filter": false
+    },
+    "columns_dict": {
+        "custkey": {
+            "attributes": {
+                "classification": "common"
+            }
+        },
+        "nationkey": {
+            "attributes": {
+                "classification": "common"
+            }
+        }
+    }
+}
