@@ -3,6 +3,5 @@
 ./cms
 ./rls
 ./access
-./filters
 ./admin
 main.rego

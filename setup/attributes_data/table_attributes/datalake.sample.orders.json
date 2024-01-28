@@ -6,62 +6,53 @@
         "content_world": "logistics",
         "row_filter": false
     },
-    "columns_list": [
-        {
-            "column_name": "orderkey",
+    "columns_dict": {
+        "orderkey": {
             "attributes": {
                 "classification": "sales",
                 "mask": "id"
             }
         },
-        {
-            "column_name": "custkey",
+        "custkey":{
             "attributes": {
                 "classification": "sales",
                 "mask": "id"
             }
         },
-        {
-            "column_name": "orderstatus",
+        "orderstatus":{
             "attributes": {
                 "classification": "orders"
             }
         },
-        {
-            "column_name": "totalprice",
+        "totalprice": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "orderdate",
+        "orderdate": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "orderpriority",
+        "orderpriority": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "clerk",
+        "clerk": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "shippriority",
+        "shippriority": {
             "attributes": {
                 "classification": "sales"
             }
         },
-        {
-            "column_name": "comment",
+        "comment": {
             "attributes": {
                 "classification": "common"
             }
         }
-    ]
+    }
 }
