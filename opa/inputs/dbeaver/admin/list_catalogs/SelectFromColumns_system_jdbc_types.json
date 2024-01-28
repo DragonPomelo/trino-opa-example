@@ -1,0 +1,41 @@
+{
+    "action": {
+        "operation": "SelectFromColumns",
+        "resource": {
+            "table": {
+                "catalogName": "system",
+                "columns": [
+                    "create_params",
+                    "type_name",
+                    "nullable",
+                    "auto_increment",
+                    "num_prec_radix",
+                    "precision",
+                    "minimum_scale",
+                    "sql_data_type",
+                    "maximum_scale",
+                    "literal_prefix",
+                    "searchable",
+                    "literal_suffix",
+                    "case_sensitive",
+                    "fixed_prec_scale",
+                    "data_type",
+                    "local_type_name",
+                    "sql_datetime_sub",
+                    "unsigned_attribute"
+                ],
+                "schemaName": "jdbc",
+                "tableName": "types"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

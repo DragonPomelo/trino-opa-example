@@ -1,0 +1,45 @@
+{
+    "action": {
+        "filterResources": [
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "columns": [
+                        "regionkey",
+                        "name",
+                        "comment",
+                        "$path",
+                        "$file_modified_time"
+                    ],
+                    "schemaName": "sample",
+                    "tableName": "region"
+                }
+            }
+        ],
+        "operation": "FilterColumns",
+        "resource": {
+            "table": {
+                "catalogName": "datalake",
+                "column": "$path",
+                "columns": [
+                    "regionkey",
+                    "name",
+                    "comment",
+                    "$path",
+                    "$file_modified_time"
+                ],
+                "schemaName": "sample",
+                "tableName": "region"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "action": {
+        "filterResources": [
+            {
+                "catalog": {
+                    "name": "tpcds"
+                }
+            },
+            {
+                "catalog": {
+                    "name": "system"
+                }
+            },
+            {
+                "catalog": {
+                    "name": "memory"
+                }
+            },
+            {
+                "catalog": {
+                    "name": "jmx"
+                }
+            },
+            {
+                "catalog": {
+                    "name": "datalake"
+                }
+            },
+            {
+                "catalog": {
+                    "name": "tpch"
+                }
+            }
+        ],
+        "operation": "FilterCatalogs",
+        "resource": {
+            "catalog": {
+                "name": "jmx"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

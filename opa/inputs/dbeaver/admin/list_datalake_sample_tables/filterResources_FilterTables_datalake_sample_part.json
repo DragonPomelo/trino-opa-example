@@ -1,0 +1,79 @@
+{
+    "action": {
+        "filterResources": [
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "customer"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "lineitem"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "nation"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "orders"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "part"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "partsupp"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "region"
+                }
+            },
+            {
+                "table": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample",
+                    "tableName": "supplier"
+                }
+            }
+        ],
+        "operation": "FilterTables",
+        "resource": {
+            "table": {
+                "catalogName": "datalake",
+                "schemaName": "sample",
+                "tableName": "part"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

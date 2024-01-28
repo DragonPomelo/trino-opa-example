@@ -1,0 +1,34 @@
+{
+    "action": {
+        "filterResources": [
+            {
+                "schema": {
+                    "catalogName": "datalake",
+                    "schemaName": "information_schema"
+                }
+            },
+            {
+                "schema": {
+                    "catalogName": "datalake",
+                    "schemaName": "sample"
+                }
+            }
+        ],
+        "operation": "FilterSchemas",
+        "resource": {
+            "schema": {
+                "catalogName": "datalake",
+                "schemaName": "sample"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

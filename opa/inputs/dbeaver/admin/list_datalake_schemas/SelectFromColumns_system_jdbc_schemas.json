@@ -1,0 +1,25 @@
+{
+    "action": {
+        "operation": "SelectFromColumns",
+        "resource": {
+            "table": {
+                "catalogName": "system",
+                "columns": [
+                    "table_schem",
+                    "table_catalog"
+                ],
+                "schemaName": "jdbc",
+                "tableName": "schemas"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

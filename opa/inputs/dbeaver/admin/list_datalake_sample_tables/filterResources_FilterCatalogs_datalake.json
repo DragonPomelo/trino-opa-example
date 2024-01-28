@@ -1,0 +1,26 @@
+{
+    "action": {
+        "filterResources": [
+            {
+                "catalog": {
+                    "name": "datalake"
+                }
+            }
+        ],
+        "operation": "FilterCatalogs",
+        "resource": {
+            "catalog": {
+                "name": "datalake"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "action": {
+        "operation": "SelectFromColumns",
+        "resource": {
+            "table": {
+                "catalogName": "system",
+                "columns": [
+                    "ref_generation",
+                    "type_name",
+                    "type_schem",
+                    "table_schem",
+                    "type_cat",
+                    "table_cat",
+                    "table_name",
+                    "self_referencing_col_name",
+                    "remarks",
+                    "table_type"
+                ],
+                "schemaName": "jdbc",
+                "tableName": "tables"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}

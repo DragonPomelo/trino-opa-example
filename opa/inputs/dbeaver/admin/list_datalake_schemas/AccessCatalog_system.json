@@ -1,0 +1,19 @@
+{
+    "action": {
+        "operation": "AccessCatalog",
+        "resource": {
+            "catalog": {
+                "name": "system"
+            }
+        }
+    },
+    "context": {
+        "identity": {
+            "groups": [],
+            "user": "admin"
+        },
+        "softwareStack": {
+            "trinoVersion": "435"
+        }
+    }
+}
