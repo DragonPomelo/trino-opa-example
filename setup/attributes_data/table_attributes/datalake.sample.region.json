@@ -8,16 +8,19 @@
     },
     "columns_dict": {
         "regionkey":{
+            "column_name": "regionkey",
             "attributes": {
                 "classification": "common"
             }
         },
         "name": {
+            "column_name": "name",
             "attributes": {
                 "classification": "common"
             }
         },
         "comment": {
+            "column_name": "comment",
             "attributes": {
                 "classification": "common"
             }
