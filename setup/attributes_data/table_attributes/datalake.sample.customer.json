@@ -9,43 +9,51 @@
     },
     "columns_dict": {
         "custkey": {
+            "column_name": "custkey",
             "attributes": {
                 "classification": "sales",
                 "mask": "id"
             }
         },
         "name": {
+            "column_name": "name",
             "attributes": {
                 "classification": "personnel",
                 "mask": "star"
             }
         },
         "address": {
+            "column_name": "address",
             "attributes": {
                 "classification": "personnel"
             }
         },
         "nationkey": {
+            "column_name": "nationkey", 
             "attributes": {
                 "classification": "sales"
             }
         },
         "phone": {
+            "column_name": "phone",
             "attributes": {
                 "classification": "personnel"
             }
         },
         "acctbal": {
+            "column_name": "acctbal",
             "attributes": {
                 "classification": "sales"
             }
         },
         "mktsegment": {
+            "column_name": "mktsegment",
             "attributes": {
                 "classification": "sales"
             }
         },
         "comment": {
+            "column_name": "comment",
             "attributes": {
                 "classification": "common"
             }

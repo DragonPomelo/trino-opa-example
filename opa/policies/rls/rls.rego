@@ -16,6 +16,5 @@ filter := row_filter if {
 	customer_properties := "datalake.sample.customer_properties"
 
 	expression := sprintf("%v.%v IN (select _s.%v from %v as _s where _s.%v in (%v))", [table_name, row_filter_id, row_filter_id, customer_properties, filter_key, filter_values_string])
-	print(expression)
 	row_filter := {"expression": sprintf("%v", [expression])}
 }

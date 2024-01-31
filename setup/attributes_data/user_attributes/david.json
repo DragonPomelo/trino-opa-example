@@ -7,6 +7,10 @@
     ],
     "attributes": [
         {
+            "content_world": "global",
+            "classification": "common"
+        },
+        {
             "content_world": "logistics",
             "classification": "sales",
             "filter_value": [

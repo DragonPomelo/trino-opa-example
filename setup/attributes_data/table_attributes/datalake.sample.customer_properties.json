@@ -8,11 +8,13 @@
     },
     "columns_dict": {
         "custkey": {
+            "column_name": "custkey",
             "attributes": {
                 "classification": "common"
             }
         },
         "nationkey": {
+            "column_name": "nationkey",
             "attributes": {
                 "classification": "common"
             }
