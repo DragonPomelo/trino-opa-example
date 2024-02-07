@@ -1,6 +1,7 @@
 package examples_user
 import future.keywords.contains
 import future.keywords.every
+import future.keywords.if
 
 default allow = false
 
@@ -10,12 +11,12 @@ default single_resource = false
 # ================== admin ==================
 
 # allow access to all simple trino requests for admin user
-allow {
+allow if {
 	print(input)
 	input.context.identity.user == "admin"
 }
 # access to all batch requests for admin user
-single_resource {
+single_resource if {
     print(input)
 	input.context.identity.user == "admin"
 }
@@ -23,7 +24,7 @@ single_resource {
 # ================== resources access user ==================
 
 # access to tpch catalog resource for user shoham1
-single_resource {
+single_resource if {
     print(input)
 	input.action.operation == "FilterCatalogs"
 	input.action.resource.catalog.name == "tpch"
@@ -31,7 +32,7 @@ single_resource {
 }
 
 # access to sf1 resource in tpch catalog for user shoham1
-single_resource {
+single_resource if {
 	input.action.operation == "FilterSchemas"
 	input.action.resource.schema.catalogName == "tpch"
 	input.action.resource.schema.schemaName == "sf1"
@@ -40,7 +41,7 @@ single_resource {
 
 
 # access to sf1 resource in tpch catalog for user shoham1
-single_resource {
+single_resource if {
 	input.action.operation == "FilterTables"
 	input.action.resource.table.catalogName == "tpch"
 	input.action.resource.table.schemaName == "sf1"
@@ -49,7 +50,7 @@ single_resource {
 }
 
 # access to sf1 resource in tpch catalog for user shoham1
-single_resource {
+single_resource if {
 	input.action.operation == "FilterColumns"
 	input.action.resource.table.catalogName == "tpch"
 	input.action.resource.table.schemaName == "sf1"
@@ -63,21 +64,21 @@ single_resource {
 
 
 # access to tpch trino for user some user
-allow {
+allow if {
 	print(input)
 	input.action.operation == "AccessCatalog"
     input.action.resource.catalog.name == "tpch"
 	input.context.identity.user == "shoham1"
 }
 # access to tpch.sf1 trino for user some user
-allow {
+allow if {
 	print(input)
 	input.action.operation == "ShowSchemas"
     input.action.resource.catalog.name == "tpch"
 	input.context.identity.user == "shoham1"
 }
 # allow making show tables under specific schema
-allow {
+allow if {
 	print(input)
 	input.action.operation == "ShowTables"
     input.action.resource.schema.catalogName == "tpch"
@@ -89,7 +90,7 @@ allow {
 # for SHOW COLUMNS we need the folowing:
 
 # show columns under specific table
-allow {
+allow if {
 	print(input)
 	input.action.operation == "ShowColumns"
     input.action.resource.table.catalogName == "tpch"
@@ -99,7 +100,7 @@ allow {
 }
 
 # access to specific column in specific table
-allow {
+allow if {
 	print(input)
 	input.action.operation == "SelectFromColumns"
     input.action.resource.table.catalogName == "tpch"
@@ -112,7 +113,7 @@ allow {
 
 
 # access to specific column in specific table
-allow {
+allow if {
 	print(input)
 	input.action.operation == "SelectFromColumns"
     input.action.resource.table.catalogName == "tpch"
@@ -124,7 +125,7 @@ allow {
     input.context.identity.user == "shoham1"
 }
 
-allow {
+allow if {
 	print(input)
 	url := concat("", ["localhost:8081?user_id=", input.context.identity.user])
 	response := http.send({"method": "get", "url": url})
@@ -133,20 +134,20 @@ allow {
 }
 
 # access to trino for user some user
-allow {
+allow if {
 	input.action.operation == "ExecuteQuery"
 	input.context.identity.user == "shoham1"
 }
 
 # access to trino for user some user
-allow {
+allow if {
 	print(input)
 	input.action.operation == "AccessCatalog"
     input.action.resource.catalog.name == "system"
 	input.context.identity.user == "shoham1"
 }
 # access to trino for user some user
-allow {
+allow if {
 	print(input)
 	input.action.operation == "SelectFromColumns"
     input.action.resource.table.catalogName == "system"
@@ -159,7 +160,7 @@ allow {
 
 # ... rest of the policy ...
 # this assumes the non-batch response field is called "allow"
-batch contains i {
+batch contains i if {
     some i
     raw_resource := input.action.filterResources[i]
     single_resource with input.action.resource as raw_resource
@@ -168,7 +169,7 @@ batch contains i {
 # Corner case: filtering columns is done with a single table item, and many columns inside
 # We cannot use our normal logic in other parts of the policy as they are based on sets
 # and we need to retain order
-batch contains i {
+batch contains i if {
     some i
     input.action.operation == "FilterColumns"
     count(input.action.filterResources) == 1

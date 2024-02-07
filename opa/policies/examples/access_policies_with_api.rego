@@ -7,7 +7,7 @@ default allow = false
 default single_resource = false
 url := concat("", ["http://abac_api:8081/users?user_id=", input.context.identity.user])
 user_attributes := http.send({"method": "GET", "url": url}).body
-allow {
+allow if {
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -16,18 +16,18 @@ allow {
 	print(user_attributes)
 }
 
-single_resource {
+single_resource if {
     print("FilterCatalogs")
     input.action.operation == "FilterCatalogs"
 }
 
-single_resource {
+single_resource if {
     print("FilterSchemas")
     input.action.operation == "FilterSchemas"
 }
 
 
-single_resource {
+single_resource if {
     print("FilterTables")
     input.action.operation == "FilterTables"
     requested_table := {"catalog_name": input.action.resource.table.catalogName, "schema_name": input.action.resource.table.schemaName, "table_name": input.action.resource.table.tableName}
@@ -58,14 +58,14 @@ attributes_match(user_attributes, table_attributes) if {
     print( "inter=", inter_atr)
 }
 
-apple(color){
+apple(color) if {
     color == "red"
 }
 # ================== batch ==================
 
 # ... rest of the policy ...
 # this assumes the non-batch response field is called "allow"
-batch contains i {
+batch contains i if {
     some i
     raw_resource := input.action.filterResources[i]
     single_resource with input.action.resource as raw_resource
@@ -74,7 +74,7 @@ batch contains i {
 # Corner case: filtering columns is done with a single table item, and many columns inside
 # We cannot use our normal logic in other parts of the policy as they are based on sets
 # and we need to retain order
-batch contains i {
+batch contains i if {
     some i
     input.action.operation == "FilterColumns"
     count(input.action.filterResources) == 1

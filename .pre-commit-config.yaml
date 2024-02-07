@@ -11,6 +11,7 @@ repos:
   - repo: local
     hooks:
       - id: opa-check
+        args: ["--v1-compatible"]
         name: opa check
         entry: opa check opa/policies
         language: system

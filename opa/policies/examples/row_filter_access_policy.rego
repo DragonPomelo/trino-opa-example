@@ -7,7 +7,7 @@ default allow := true
 column_resource := input.action.resource.column
 
 table_resource := input.action.resource.table
-is_admin {
+is_admin if {
     input.context.identity.user == "admin"
 }
 
